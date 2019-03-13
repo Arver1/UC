@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+  url('../fonts/Roboto-400.woff2') format('woff2'),
+  url('../fonts/Roboto-400.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-500.woff2') format('woff2'),
+  url('../fonts/Roboto-500.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CometaC';
+  src: local('CometaC'),
+  url('../fonts/CometaC.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DearJoe';
+  src: local('DearJoe'),
+  url('../fonts/DearJoe-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Baskervilleazps';
+  src: url('../fonts/Baskervilleazps-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  src: url('../fonts/HelveticaNeueCyr-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  src: url('../fonts/HelveticaNeueCyr-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'HelveticaNeueCyr_Roman';
+  src: url('../fonts/HelveticaNeueCyr-Roman.woff') format('woff');
+}

@@ -1,0 +1,29 @@
+$main-color-red: #860809;
+$textHoverColor: #ff8b00;
+$logo_color: #000;
+$logo-family: 'DearJoe';
+$btn-cart-family: 'HelveticaNeueCyr';
+$logo-size: 50px;
+$Roboto: 'Roboto', sans-serif;
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+@mixin flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: top;
+}
+@mixin font($size: 16px, $weight: 500, $height: normal, $color: #000, $family: $Roboto) {
+  font-size: $size;
+  line-height: $height;
+  font-weight: $weight;
+  color: $color;
+  font-family: $family;
+}

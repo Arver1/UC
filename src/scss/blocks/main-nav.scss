@@ -1,0 +1,95 @@
+@import '../variables';
+.main-nav {
+
+  &__wrapper {
+    max-width: 768px;
+    margin: 0 auto;
+    outline: 1px solid tomato;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: none;
+  }
+
+  &__menu-wrapper {
+    order: -1;
+  }
+  &__wrapper input {
+    display: none;
+  }
+  &__wrapper input:checked ~ &__items{
+    display: block;
+    position: absolute;
+    top: 55px;
+    left: 20px;
+  }
+  &__wrapper label {
+    display: block;
+    font-size: 0;
+    width: 20px;
+    height: 2px;
+    margin: 12px 0 0;
+    position: relative;
+    background-color: $main-color-red;
+    cursor: pointer;
+    box-shadow:
+            0 -5px 0 $main-color-red,
+            0 5px 0 $main-color-red;
+  }
+  &__wrapper label::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: transparent;
+    width: 20px;
+    height: 14px;
+    top: -6.5px;
+    left: 0;
+  }
+  &__wrapper input:checked ~ label {
+    background-color: transparent;
+    box-shadow: none;
+    height: 14px;
+    margin: 6px 0 0;
+  }
+  &__wrapper input:checked ~ label::before,
+  &__wrapper input:checked ~ label::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: $main-color-red;
+    width: 20px;
+    height: 2px;
+    top: 6px;
+    left: 0;
+    transform-origin: center;
+  }
+  &__wrapper input:checked ~ label::before {
+    transform: rotate(-45deg);
+  }
+  &__wrapper input:checked ~ label::after {
+    transform: rotate(45deg);
+  }
+  &__items {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    width: calc(100% - 40px);
+    background-color: #fff;
+    border-radius: 0 0 17px 17px;
+  }
+  &__item {
+    margin-bottom: 5px;
+  }
+  &__link {
+    text-decoration: none;
+    @include font(16px, 20px, normal, #858585);
+  }
+  &__link:hover {
+    color: #000;
+  }
+}
