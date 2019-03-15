@@ -1,0 +1,23 @@
+@import '../variables';
+.contacts {
+  padding: $header-mobil-top-padding;
+  margin-left: auto;
+  @include flex();
+  flex-direction: column;
+
+  &__number {
+    @include font(14px, 500, normal, $main-color-dgray);
+  }
+
+  &__description {
+    order: 1;
+    margin-left: auto;
+    @include font(12px, 400, normal, $main-color-dgray);
+    margin-bottom: 5px;
+  }
+
+  &__btn {
+    order: 2;
+    margin-left: auto;
+  }
+}

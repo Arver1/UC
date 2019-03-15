@@ -1,0 +1,12 @@
+@import '../variables';
+.page-header {
+  margin-bottom: 30px;
+  &__wrapper {
+    @include mobil-wrapper();
+    @include flex();
+  }
+
+  &__title {
+    @include hidden();
+  }
+}

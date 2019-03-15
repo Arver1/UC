@@ -1,0 +1,51 @@
+@import '../variables';
+.page-main {
+
+  &__wrapper {
+    @include mobil-wrapper();
+  }
+
+  &__title {
+    @include flex-center();
+    text-align: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  &__title > span {
+    @include font(26px, 400, normal, $main-color-gray);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  &__title > strong {
+    @include font(14px, 400, normal, $main-color-gray);
+  }
+
+  &__record {
+    @include font(14px, 400, normal, $main-color-gray);
+    text-align: center;
+    display: inline-block;
+    padding-left: 24px;
+    position: relative;
+    border-radius: 10px;
+    outline: $main-color-gray
+  }
+
+  &__record > b{
+    @include font(14px, 400, normal, #000);
+  }
+
+  &__record::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: #fff url('../../src/img/record@1x.png') 50% 50% no-repeat;
+    @media (min-resolution: 144dpi),
+    (min-resolution: 1.5dppx) {
+      background: #fff url('../../src/img/record@2x.png') 50% 50% no-repeat;
+    }
+    width: 20px;
+    height: 16px;
+  }
+}

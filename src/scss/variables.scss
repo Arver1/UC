@@ -1,10 +1,20 @@
 $main-color-red: #860809;
+$main-color-gray: #A8A6A7;
+$main-color-dgray: #65585F;
+$main-color-border: #F7EAF1;
+$header-mobil-top-padding: 16px 0 0;
 $textHoverColor: #ff8b00;
 $logo_color: #000;
 $logo-family: 'DearJoe';
 $btn-cart-family: 'HelveticaNeueCyr';
 $logo-size: 50px;
 $Roboto: 'Roboto', sans-serif;
+@mixin mobil-wrapper {
+  width: 320px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 10px;
+}
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -27,3 +37,13 @@ $Roboto: 'Roboto', sans-serif;
   color: $color;
   font-family: $family;
 }
+@mixin hidden {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+

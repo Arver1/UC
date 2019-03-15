@@ -4,29 +4,54 @@
   <meta charset="UTF-8">
   <title>Shop24</title>
   <link rel="stylesheet" href="src/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<header>
-  <nav class="main-nav">
-    <div class="main-nav__wrapper">
-      <a class="main-nav__logo">
-        <img src="https://via.placeholder.com/30" />
-      </a>
-      <h1>Межрегиональный центр оценки квалификаций электроэнергетики</h1>
-      <div class="main-nav__menu-wrapper">
-        <input type="checkbox" id="burger_menu">
-        <label for="burger_menu" tabindex="1">Открыть меню</label>
-        <ul class="main-nav__items">
-          <li class="main-nav__item"><a class="main-nav__link" href="#">Тестовый пункт меню</a></li>
-          <li class="main-nav__item"><a class="main-nav__link" href="#">Тестовый пункт меню</a></li>
-          <li class="main-nav__item"><a class="main-nav__link" href="#">Тестовый пункт меню</a></li>
-      </ul>
+<header class="page-header">
+  <div class="page-header__wrapper">
+    <h1 class="page-header__title">Межрегиональный центр оценки квалификации электроэнергетики</h1>
+    <nav class="main-nav">
+      <div class="main-nav__wrapper">
+        <a class="main-nav__logo">
+          <img src="https://via.placeholder.com/30" />
+        </a>
+        <div class="main-nav__menu-wrapper">
+          <input type="checkbox" id="burger_menu">
+          <label for="burger_menu" tabindex="1">Открыть меню</label>
+          <abbr title="Межрегиональный центр оценки квалификации электроэнергетики"><a class="main-nav__abbr" href="">МЦОК</a></abbr>
+          <ul class="main-nav__items">
+            <li class="main-nav__item"><a class="main-nav__link" href="#">Тестовый пункт меню</a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#">Тестовый пункт меню</a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#">Тестовый пункт меню</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
-<main>
+    </nav>
+    <section class="contacts">
+      <h2 class="visually-hidden">Время работы центра</h2>
+      <a class="contacts__number" href="tel:+74995830670">+7 (499)-583-06-70</a>
+      <a class="contacts__btn btn" href="#">Подать заявку</a>
+      <small class="contacts__description">Пн-Пт: 8:00-20:00</small>
+    </section>
+    <section class="data-user">
 
+    </section>
+  </div>
+</header>
+<main class="page-main">
+  <div class="page-main__wrapper">
+    <h2 class="page-main__title">
+      <span>Профессиональная деятельность</span>
+      <strong>должна начинаться с подтверждения оценки квалификации</strong>
+    </h2>
+    <strong class="page-main__record">Регистрационный номер: <b>50.009</b></strong>
+    <picture class="page-main__cert">
+      <img src="#" width="300" height="400" alt="Образец выдаваемого сертификата" border="1"/>
+    </picture>
+    <picture class="page-main__cert">
+      <img src="#" width="300" height="400" alt="Образец выдаваемого сертификата" border="1"/>
+    </picture>
+  </div>
 </main>
 <footer>
 

@@ -15,7 +15,12 @@ legend {
 li {
   list-style-type: none;
 }
-body, html {
+a,
+abbr {
+  text-decoration: none;
+}
+body,
+html {
   width: 100%;
   height: 100%;
   margin: 0;

@@ -1,12 +1,15 @@
 @import '../variables';
 .main-nav {
-
+  order: -1;
+  display: flex;
+  flex-direction: column;
+  padding: $header-mobil-top-padding;
+  min-height: 37px;
+  margin-right: 20px;
   &__wrapper {
     max-width: 768px;
     margin: 0 auto;
-    outline: 1px solid tomato;
-    display: flex;
-    justify-content: space-between;
+    @include flex();
   }
 
   &__logo {
@@ -15,29 +18,33 @@
 
   &__menu-wrapper {
     order: -1;
+    @include flex-center();
   }
+
   &__wrapper input {
     display: none;
   }
+
   &__wrapper input:checked ~ &__items{
     display: block;
     position: absolute;
     top: 55px;
     left: 20px;
   }
+
   &__wrapper label {
     display: block;
     font-size: 0;
     width: 20px;
     height: 2px;
-    margin: 12px 0 0;
     position: relative;
-    background-color: $main-color-red;
+    background: linear-gradient(to right,$main-color-red 60%, transparent 60%, transparent 70%, $main-color-red 70%);
     cursor: pointer;
     box-shadow:
             0 -5px 0 $main-color-red,
-            0 5px 0 $main-color-red;
+            0 5px 0 $main-color-red,
   }
+
   &__wrapper label::after {
     content: "";
     display: block;
@@ -48,12 +55,14 @@
     top: -6.5px;
     left: 0;
   }
+
   &__wrapper input:checked ~ label {
     background-color: transparent;
     box-shadow: none;
     height: 14px;
     margin: 6px 0 0;
   }
+
   &__wrapper input:checked ~ label::before,
   &__wrapper input:checked ~ label::after {
     content: "";
@@ -66,12 +75,20 @@
     left: 0;
     transform-origin: center;
   }
+
   &__wrapper input:checked ~ label::before {
     transform: rotate(-45deg);
   }
+
   &__wrapper input:checked ~ label::after {
     transform: rotate(45deg);
   }
+
+  &__abbr {
+    @include font(14px, 500, normal, $main-color-dgray);
+    padding-left: 10px;
+  }
+
   &__items {
     display: none;
     list-style: none;
@@ -82,13 +99,16 @@
     background-color: #fff;
     border-radius: 0 0 17px 17px;
   }
+
   &__item {
     margin-bottom: 5px;
   }
+
   &__link {
     text-decoration: none;
     @include font(16px, 20px, normal, #858585);
   }
+
   &__link:hover {
     color: #000;
   }
