@@ -13,17 +13,17 @@
   }
 
   &__title > span {
-    @include font(26px, 400, normal, $main-color-gray);
+    @include font(26px, 400, normal, $main-color-dgray);
     text-transform: uppercase;
     margin-bottom: 20px;
   }
 
   &__title > strong {
-    @include font(14px, 400, normal, $main-color-gray);
+    @include font(14px, 400, normal, $main-color-dgray);
   }
 
   &__record {
-    @include font(14px, 400, normal, $main-color-gray);
+    @include font(14px, 400, normal, $main-color-dgray);
     text-align: center;
     display: inline-block;
     padding: 10px 10px 10px 34px;
@@ -55,6 +55,7 @@
   &__cert {
     display: block;
     width: 100%;
+    text-align: center;
   }
 
   &__cert + &__cert {

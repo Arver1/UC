@@ -10,7 +10,8 @@ $btn-cart-family: 'HelveticaNeueCyr';
 $logo-size: 50px;
 $Roboto: 'Roboto', sans-serif;
 @mixin mobil-wrapper {
-  width: 320px;
+  max-width: 375px;
+  min-width: 320px;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0 10px;

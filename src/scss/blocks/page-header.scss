@@ -7,6 +7,15 @@
   }
 
   &__title {
-    @include hidden();
+    order: -1;
+    flex-grow: 1;
+    padding-left: 30px;
+    @include font(12px, 500, normal, $main-color-gray);
+    position: relative;
+  }
+
+  &__title > mark {
+    background: none;
+    color: $main-color-red;
   }
 }
