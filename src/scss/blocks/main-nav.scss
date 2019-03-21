@@ -28,21 +28,21 @@
   &__wrapper input:checked ~ &__items{
     display: block;
     position: absolute;
-    top: 55px;
-    left: 20px;
+    left: 0;
+    top: 0;
   }
 
   &__wrapper label {
     display: block;
     font-size: 0;
-    width: 20px;
+    width: 30px;
     height: 2px;
     position: relative;
     background: linear-gradient(to right,$main-color-red 60%, transparent 60%, transparent 70%, $main-color-red 70%);
     cursor: pointer;
     box-shadow:
-            0 -5px 0 $main-color-red,
-            0 5px 0 $main-color-red,
+            0 -8px 0 $main-color-red,
+            0 8px 0 $main-color-red,
   }
 
   &__wrapper label::after {
@@ -50,7 +50,7 @@
     display: block;
     position: absolute;
     background-color: transparent;
-    width: 20px;
+    width: 30px;
     height: 14px;
     top: -6.5px;
     left: 0;
@@ -85,7 +85,7 @@
   }
 
   &__abbr {
-    @include font(14px, 500, normal, $main-color-dgray);
+    @include font(26px, 600, normal, $main-color-dgray);
     padding-left: 10px;
   }
 
@@ -95,9 +95,11 @@
     margin: 0;
     padding: 0 20px;
     box-sizing: border-box;
-    width: calc(100% - 40px);
-    background-color: #fff;
+    background-color: $main-color-gray;
+    z-index: 100;
     border-radius: 0 0 17px 17px;
+    width: calc(100% - 50px);
+    min-height: 100%;
   }
 
   &__item {

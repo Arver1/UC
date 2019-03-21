@@ -15,7 +15,7 @@
 
   &__description {
     margin-left: auto;
-    @include font(12px, 400, normal, $main-color-dgray);
+    @include font(12px, 500, normal, $main-color-dgray);
     margin-bottom: 5px;
     text-align: right;
   }
@@ -23,7 +23,7 @@
   &__description--adress {
     order: -1;
     margin-left: auto;
-    @include font(12px, 500, normal, $main-color-dgray);
+    @include font(12px, 400, normal, $main-color-dgray);
     margin-bottom: 5px;
     min-width: 120px;
   }
