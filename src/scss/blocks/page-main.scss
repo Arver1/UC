@@ -61,5 +61,49 @@
   &__cert + &__cert {
     margin-top: 20px;
   }
+
+  &__item {
+    margin: 0 auto;
+    @include flex();
+    flex-direction: column;
+    border: 1px solid $main-color-border;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    border-bottom: none;
+    border-image:
+        linear-gradient(
+          to bottom,
+          red,
+          rgba(0, 0, 0, 0)
+        ) 1 100%;
+  }
+
+  &__item + &__item {
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__item + &__item::before,
+  &__item + &__item::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 13px;
+    height: 2px;
+    background: #fff;
+    top: -2px;
+  }
+
+  &__item + &__item::before {
+    right: 0;
+  }
+
+  &__item > img {
+    order: -1;
+  }
+
+  &__item > h3 {
+    @include font(14px, 400, normal, $main-color-dgray);
+    align-self: flex-end;
+  }
 }
 

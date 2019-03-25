@@ -30,7 +30,7 @@
     <nav class="main-nav">
       <div class="main-nav__wrapper">
         <a class="main-nav__logo">
-          <img src="https://via.placeholder.com/30" />
+          <img src="src/img/logo.svg" width="30" height="30"/>
         </a>
         <div class="main-nav__menu-wrapper">
           <input type="checkbox" id="burger_menu">
@@ -42,18 +42,14 @@
             <li class="main-nav__item"><a class="main-nav__link" href="#">Тестовый пункт меню</a></li>
           </ul>
         </div>
-        <p></p>
       </div>
     </nav>
-    <section class="contacts">
+    <section class="contacts" style="display: none">
       <h2 class="visually-hidden">Время работы центра</h2>
       <a class="contacts__number" href="tel:+74995830670">+7 (499)-583-06-70</a>
       <a class="contacts__btn btn" href="#">Подать заявку</a>
       <small class="contacts__description contacts__description--time">Пн-Пт: 8:00-20:00</small>
       <p class="contacts__description contacts__description--adress">143040 МО г.Голицыно<br />Генерала Ремезова, д.6</p>
-    </section>
-    <section class="data-user">
-
     </section>
   </div>
 </header>
@@ -63,6 +59,18 @@
       <span>Профессиональная деятельность</span>
       <strong>должна начинаться с подтверждения оценки квалификации</strong>
     </h2>
+    <ul class="page-main__items">
+      <li class="page-main__item">
+        <h3>Физические лица и ИП</h3>
+        <img src="src/img/worker.jpg" width="103" height="120" alt="Изображение сотрудника" >
+        <a class="btn" href="#req_indiv" title="Подать заявку как физическое лицо и ИП">Подать заявку</a>
+      </li>
+      <li class="page-main__item">
+        <h3>Юридические лица</h3>
+        <img src="src/img/b6.png" width="80" height="120" alt="Изображение начальника">
+        <a class="btn" href="#req_entity" title="Подать заявку как юридическое лицо">Подать заявку</a>
+      </li>
+    </ul>
     <strong class="page-main__record">Регистрационный номер: <b>50.009</b></strong>
     <picture class="page-main__cert">
       <img src="https://via.placeholder.com/300x400" width="300" height="400" alt="Образец выдаваемого сертификата" border="1"/>

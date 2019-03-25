@@ -1,24 +1,18 @@
 @import '../variables';
 .main-nav {
-  order: -1;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   padding: $header-mobil-top-padding;
   min-height: 37px;
-  margin-right: 20px;
   &__wrapper {
-    max-width: 768px;
-    margin: 0 auto;
     @include flex();
   }
 
-  &__logo {
-    display: none;
-  }
-
   &__menu-wrapper {
-    order: -1;
     @include flex-center();
+    justify-content: space-between;
+    flex-grow: 1;
   }
 
   &__wrapper input {
@@ -36,7 +30,7 @@
     display: block;
     font-size: 0;
     width: 30px;
-    height: 2px;
+    height: 3px;
     position: relative;
     background: linear-gradient(to right,$main-color-red 60%, transparent 60%, transparent 70%, $main-color-red 70%);
     cursor: pointer;
@@ -82,6 +76,10 @@
 
   &__wrapper input:checked ~ label::after {
     transform: rotate(45deg);
+  }
+
+  &__wrapper abbr {
+    order: -1;
   }
 
   &__abbr {

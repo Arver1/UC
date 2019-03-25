@@ -4,14 +4,15 @@
   &__wrapper {
     @include mobil-wrapper();
     @include flex();
+    position: relative;
   }
 
   &__title {
-    order: -1;
+    position: absolute;
+    bottom: 0;
     flex-grow: 1;
-    padding-left: 30px;
-    @include font(12px, 500, normal, $main-color-gray);
-    position: relative;
+    padding-left: 41px;
+    @include font(9px, 500, normal, $main-color-gray);
   }
 
   &__title > mark {
