@@ -27,14 +27,14 @@
     text-align: center;
     display: inline-block;
     padding: 10px 10px 10px 34px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
     position: relative;
     border-radius: 10px;
     border: 1px solid $main-color-border;
   }
 
   &__record > b{
-    @include font(14px, 400, normal, #000);
+    @include font(14px, 500, normal, #000);
   }
 
   &__record::before {
@@ -62,41 +62,38 @@
     margin-top: 20px;
   }
 
-  &__item::after {
-    background: linear-gradient(to right, #ffffff 0%, $main-color-dgray 100%);
-    content: "";
-    display: block;
-    /* Вместо толщины */
-    height: 2px;
-    width: 100%;
+  &__items {
+    padding: 0 15px;
+  }
+
+  &__item {
+    background: linear-gradient(160deg, #ffffff 45%, #C8C6C7 100%);
+    border-radius: 10px;
+    @include flex();
+    max-width: 315px;
   }
 
   &__item + &__item {
-    border-radius: 0 0 10px 10px;
+    margin-top: 20px;
   }
 
-  //&__item + &__item::before,
-  //&__item + &__item::after {
-  //  content: '';
-  //  display: block;
-  //  position: absolute;
-  //  width: 13px;
-  //  height: 2px;
-  //  background: #fff;
-  //  top: -2px;
-  //}
-
-  &__item + &__item::before {
-    right: 0;
+  &__item-wrapper {
+    @include flex-center();
+    flex-direction: column;
+    width: 160px;
+    text-overflow: ellipsis;
+    flex-grow: 1;
   }
 
   &__item > img {
     order: -1;
+    align-self: flex-start;
   }
 
-  &__item > h3 {
+  &__item-wrapper > h3 {
     @include font(14px, 400, normal, $main-color-dgray);
-    align-self: flex-start;
+    align-self: flex-end;
+    margin-bottom: 10px;
   }
 }
 
