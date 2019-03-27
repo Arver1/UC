@@ -64,6 +64,7 @@
 
   &__items {
     padding: 0 15px;
+    margin-bottom: 20px;
   }
 
   &__item {
@@ -71,6 +72,7 @@
     border-radius: 10px;
     @include flex();
     max-width: 315px;
+    margin: auto;
   }
 
   &__item + &__item {
@@ -82,7 +84,6 @@
     flex-direction: column;
     width: 160px;
     text-overflow: ellipsis;
-    flex-grow: 1;
   }
 
   &__item > img {
@@ -93,7 +94,19 @@
   &__item-wrapper > h3 {
     @include font(14px, 400, normal, $main-color-dgray);
     align-self: flex-end;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  &__item-wrapper > h3::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 2px;
+    left: 10px;
+    bottom: -2px;
+    border-bottom: 1px dashed $main-color-dgray;
   }
 }
 
