@@ -71,7 +71,7 @@
     background: linear-gradient(160deg, #ffffff 45%, #C8C6C7 100%);
     border-radius: 10px;
     @include flex();
-    max-width: 315px;
+    max-width: 300px;
     margin: auto;
   }
 
@@ -93,7 +93,7 @@
 
   &__item-wrapper > h3 {
     @include font(14px, 400, normal, $main-color-dgray);
-    align-self: flex-end;
+    align-self: center;
     margin-bottom: 16px;
     position: relative;
   }
