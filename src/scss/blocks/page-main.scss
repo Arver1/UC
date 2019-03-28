@@ -58,6 +58,10 @@
     text-align: center;
   }
 
+  &__cert-mg {
+      border: 1px solid #A8A6A7;
+    }
+
   &__cert + &__cert {
     margin-top: 20px;
   }
@@ -109,19 +113,29 @@
     border-bottom: 1px dashed $main-color-dgray;
   }
 
+  &__route-items {
+    margin-bottom: 20px;
+    padding-left: 60px;
+  }
+
   &__route-item {
     @include font(14px, 400, normal, $main-color-dgray);
     text-align: center;
     display: inline-block;
-    padding: 10px 10px 10px 34px;
-    margin: 0 auto 20px;
     position: relative;
-    border-radius: 10px;
-    border: 1px solid $main-color-border;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    min-height: 20px;
   }
 
   &__route-item > b {
     @include font(14px, 500, normal, #000);
+  }
+
+  &__icon {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
   }
 }
 
