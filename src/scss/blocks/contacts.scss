@@ -1,15 +1,19 @@
 @import '../variables';
 .contacts {
-  padding: $header-mobil-top-padding;
+  position: absolute;
+  top: calc(#{-$header-mobil-top-padding} + 4px);
+  left: -$header-mobil-topHalf-padding;
+  box-sizing: border-box;
+  width: 125px;
+  overflow: hidden;
+  height: $header-mobil-top-padding;
   margin-left: auto;
   @include flex();
   flex-direction: column;
-  position: relative;
 
   &__number {
-    @include font(14px, 500, normal, $main-color-dgray);
+    @include font(14px, 500, normal, #fff);
     order: -2;
-    margin-bottom: 5px;
     text-align: right;
   }
 

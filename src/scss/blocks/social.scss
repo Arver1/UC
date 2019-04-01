@@ -1,0 +1,27 @@
+@import '../variables';
+
+.social {
+  position: absolute;
+  top: calc(-#{$header-mobil-top-padding} + 4px);
+  right: 0;
+
+  &__items {
+    @include flex();
+  }
+
+  &__link {
+    @include inline-block();
+    width: 17px;
+    height: 17px;
+    background: white;
+    font-size: 0;
+  }
+
+  &__link {
+    margin-left: 5px;
+  }
+
+  &__link--indent {
+    margin-left: 0;
+  }
+}

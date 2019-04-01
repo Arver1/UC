@@ -1,6 +1,10 @@
 @import '../variables';
 .page-header {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $main-color-red;
+  padding: $header-mobil-top-padding 0 10px;
+  background: linear-gradient(to bottom, $main-color-red $header-mobil-top-padding, #fff $header-mobil-top-padding);
+
   &__wrapper {
     @include mobil-wrapper();
     @include flex();
