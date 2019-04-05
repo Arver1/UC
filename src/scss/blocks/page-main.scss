@@ -25,7 +25,9 @@
   &__record {
     @include font(14px, 400, normal, $main-color-dgray);
     text-align: center;
-    display: inline-block;
+    display: block;
+    max-width: 280px;
+    box-sizing: border-box;
     padding: 10px 10px 10px 34px;
     margin: 0 auto 20px;
     position: relative;

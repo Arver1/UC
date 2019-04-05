@@ -2,23 +2,24 @@
 .contacts {
   position: absolute;
   width: 100%;
-  top: calc(#{-$header-mobil-top-padding} + 4px);
+  left: 0;
+  top: calc(#{-$header-mobil-top-padding} + 6px);
   box-sizing: border-box;
   overflow: hidden;
   max-height: $header-mobil-top-padding;
   @include flex();
   justify-content: flex-start;
-
+  padding: 0 10px;
   &__number {
-    @include font(14px, 500, normal, #fff);
+    @include font(12px, 500, normal, #fff);
     order: -2;
     text-align: left;
     @include inline-block();
   }
 
   &__description {
-    margin: 0 20px 5px auto;
-    @include font(14px, 500, normal, #fff);
+    margin: 0 0 5px auto;
+    @include font(12px, 500, normal, #fff);
     text-align: right;
     @include inline-block();
   }

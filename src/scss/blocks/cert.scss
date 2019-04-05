@@ -1,0 +1,18 @@
+@import '../variables';
+.cert {
+  &__title {
+    @include font(20px, 400, normal, $main-color-dgray);
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 10px 20px;
+    padding: 20px 0 0;
+  }
+  &__item {
+    background: radial-gradient(100% 100%, #ffffff 10%, #C8C6C7 70%);
+    border-radius: 10px;
+    @include flex();
+    width: 300px;
+    height: 120px;
+    margin: auto;
+  }
+}
