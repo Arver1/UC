@@ -1,0 +1,29 @@
+@import "../variables";
+.article {
+
+  &__description {
+    @include font(12px, 400, normal, #000);
+    width: 200px;
+    padding-left: 54px;
+    margin: -25px 0 5px;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+  }
+
+  &__item > time {
+    background-color: $main-color-red;
+    padding: 2px 5px;
+    border-radius: 5px;
+    @include font(10px, 500px, normal, #fff);
+  }
+
+  &__item > a {
+    @include font(10px, 400, normal, $main-color-dgray);
+    @include inline-block();
+    text-transform: uppercase;
+    text-decoration: underline;
+    padding-left: 54px;
+  }
+}

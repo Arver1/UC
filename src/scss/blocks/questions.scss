@@ -1,0 +1,17 @@
+@import "../variables";
+.questions {
+  @include flex-center();
+  margin-bottom: 20px;
+  text-align: center;
+
+  &__title {
+    @include font(20px, 400, normal, $main-color-dgray);
+    text-transform: uppercase;
+    margin: 0 10px 10px;
+    padding: 20px 0 0;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+  }
+}
