@@ -1,15 +1,11 @@
 import React from 'react';
-import Header from './Header/index';
-import Main from './Main/index';
-import Footer from './Footer/index';
+import Form from './Form';
 
 function App(){
+
+  const handleChange = (e) => console.log(e.target.value);
   return (
-    <div>
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <Form handleChange={handleChange}/>
   )
 }
 
