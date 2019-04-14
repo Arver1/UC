@@ -1,0 +1,25 @@
+* text=auto;
+
+*.html text
+*.[jt]s textg
+*.scss text
+*.md text
+*.json text
+
+#Fonts
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Graphics
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.tif binary
+*.tiff binary
+*.ico binary
+*.svg binary
+*.eps binary
+
