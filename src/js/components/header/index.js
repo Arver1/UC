@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import Spinner from '../spinner';
-import Title from './title';
-import Nav from './main-nav';
+import {Title} from './title';
+import {Nav} from './main-nav';
 import {MAIN_COLOR_RED, HEADER_MOBIL_TOP_PADDING } from '../styles';
 
 const number = '+74995830670';
@@ -41,7 +41,7 @@ class PageHeader extends Component {
       this.setState({
         isLoading: false
       });
-    }, 2000)
+    }, 500)
   }
 
   render(){

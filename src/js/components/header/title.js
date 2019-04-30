@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Roboto, MAIN_COLOR_GRAY, MAIN_COLOR_RED} from "../styles";
 
+
 const H1 = styled.h1`
   position: absolute;
   bottom: 0;
@@ -12,18 +13,15 @@ const H1 = styled.h1`
   line-height: normal;
   font-family: ${Roboto}; 
   color: ${MAIN_COLOR_GRAY};
+  
+  & > mark {
+    background: none;
+    color: ${MAIN_COLOR_RED};
+  }
 `;
 
-const Mark = styled.mark`
-  background: none;
-  color: ${MAIN_COLOR_RED};
-`;
-
-const Title = () => (
+export const Title = () => (
   <H1>
-    <Mark>М</Mark>еж<Mark>р</Mark>егиональный <Mark>ц</Mark>ентр<Mark> о</Mark>ценки <Mark>к</Mark>валификации
+    <mark>М</mark>еж<mark>р</mark>егиональный <mark>ц</mark>ентр<mark> о</mark>ценки <mark>к</mark>валификации
   </H1>
 );
-
-
-export default Title;

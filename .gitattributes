@@ -1,7 +1,7 @@
 * text=auto;
 
 *.html text
-*.[jt]s textg
+*.[jt]s text
 *.scss text
 *.md text
 *.json text

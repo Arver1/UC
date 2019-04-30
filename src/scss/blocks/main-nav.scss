@@ -39,7 +39,8 @@
     cursor: pointer;
     box-shadow:
             0 -8px 0 $main-color-red,
-            0 8px 0 $main-color-red,
+            0 8px 0 $main-color-red;
+    animation-duration: 2.5s;
   }
 
   &__wrapper label::after {
