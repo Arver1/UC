@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export class Burger extends Component {
+export class Burger_LABEL extends Component {
     state = {
         checked: false
     };

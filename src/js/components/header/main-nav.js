@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import Logo from './logo';
-import {Burger} from './burger';
 import {LogoAbbr} from "./abbr";
 import {MAIN_COLOR_RED} from "../styles";
 import {Menu} from './menu';
@@ -39,7 +38,7 @@ const MenuWrapper = styled.div`
     width: 30px;
     height: 3px;
     position: relative;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background: linear-gradient(to right,${MAIN_COLOR_RED} 60%, transparent 60%, transparent 70%, ${MAIN_COLOR_RED} 70%);
     cursor: pointer;
     box-shadow:
@@ -62,7 +61,16 @@ const MenuWrapper = styled.div`
     background: transparent;
     box-shadow: none;
     outline: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout:none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust:none;             /* prevent webkit from resizing text to fit */
+    -webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
+    -webkit-user-select:none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     height: 14px;
     margin: 6px 0 0;
   }
@@ -105,7 +113,6 @@ export const Nav = () => {
         <Wrapper>
           <Logo />
           <MenuWrapper>
-            <Burger />
             <LogoAbbr />
             <Menu />
           </MenuWrapper>
