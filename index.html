@@ -19,6 +19,7 @@
     textarea,
     button,
     select,
+    label,
     a {
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-touch-callout:none;
@@ -27,6 +28,15 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+    }
+    .visually-hidden {
+      position: absolute;
+      clip: rect(0,0,0,0);
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
     }
   </style>
 </head>

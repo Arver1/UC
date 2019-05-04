@@ -5,3 +5,4 @@ export const MAIN_COLOR_BORDER = '#F7EAF1';
 export const HEADER_MOBIL_TOP_PADDING = '26px';
 export const Roboto = '\'Roboto\', sans-serif';
 
+

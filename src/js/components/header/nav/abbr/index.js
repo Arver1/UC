@@ -1,0 +1,1 @@
+export {LogoAbbr} from './abbr';

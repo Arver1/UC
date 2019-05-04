@@ -1,17 +1,13 @@
-import React from 'react';
+import {MAIN_COLOR_RED} from "../../styles";
 import styled from "styled-components";
-import Logo from './logo';
-import {LogoAbbr} from "./abbr";
-import {MAIN_COLOR_RED} from "../styles";
-import {Menu} from './menu';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 `;
 
-const MenuWrapper = styled.div`
+export const MenuWrapper = styled.div`
   display: flex;
   align-content: center;
   align-items: center;
@@ -61,15 +57,6 @@ const MenuWrapper = styled.div`
     background: transparent;
     box-shadow: none;
     outline: none;
-    -webkit-touch-callout:none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust:none;             /* prevent webkit from resizing text to fit */
-    -webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
-    -webkit-user-select:none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     height: 14px;
     margin: 6px 0 0;
@@ -99,25 +86,10 @@ const MenuWrapper = styled.div`
   
 `;
 
-const StyledNav = styled.nav`
+export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   padding: 10px 0 0;
   min-height: 37px;
 `;
-
-export const Nav = () => {
-  return (
-      <StyledNav>
-        <Wrapper>
-          <Logo />
-          <MenuWrapper>
-            <LogoAbbr />
-            <Menu />
-          </MenuWrapper>
-        </Wrapper>
-      </StyledNav>
-  )
-};
-
