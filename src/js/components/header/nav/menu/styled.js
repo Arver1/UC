@@ -1,4 +1,5 @@
 import styled, {keyframes} from 'styled-components';
+import {Link} from 'react-router-dom';
 import {MAIN_COLOR_RED, Roboto} from '../../../styles/index'
 
 
@@ -27,15 +28,7 @@ export const Ul = styled.ul`
     flex-direction: column;
     position: absolute;
     top: 84px;
-    height: calc(${()=> {const doc = document.querySelector('body');
-  const max = Math.max(
-      document.body.scrollHeight, document.documentElement.scrollHeight,
-      document.body.offsetHeight, document.documentElement.offsetHeight,
-      document.body.clientHeight, document.documentElement.clientHeight,
-  );
-  console.log('max', document.height);
-  return max+'px';
-}} - 84px);
+    height: calc(100vh - 84px);
     background: #E0E0E0;
     width: calc(100vw - 25px);
     animation: ${({checked}) => (checked && menuShow || menuShowReverse)} ${delay}ms forwards;
@@ -43,7 +36,7 @@ export const Ul = styled.ul`
     border-top-right-radius: 5px;
 `;
 
-export const A = styled.a`
+export const StyledLink = styled(Link)`
     display: inline-block;
     vertical-align: top;
     position: relative;

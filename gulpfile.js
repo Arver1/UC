@@ -19,6 +19,8 @@ const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV.trim() === '
 const webpack = require('webpack-stream');
 const webpackConfig = require("./webpack.config.js");
 const cleanCSS = require('gulp-clean-css');
+const historyApiFallback = require('connect-history-api-fallback');
+
 gulp.task('sass', () =>
   gulp.src('src/scss/style.scss')
     .pipe(debug({title: 'src'}))
@@ -42,8 +44,12 @@ gulp.task('sass', () =>
 
 gulp.task('serv', () => {
   browserSync.init({
-    server: './',
-    index: 'index.html'
+    server: {
+      baseDir: './',
+      middleware: [historyApiFallback()],
+      index: 'index.html',
+      hotOnly: true
+    }
   });
   browserSync.watch('src/css/*.css').on('change', browserSync.reload);
   browserSync.watch('*.html').on('change', browserSync.reload);

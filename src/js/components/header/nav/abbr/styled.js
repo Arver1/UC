@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 import {MAIN_COLOR_DGRAY, Roboto} from "../../../styles/index";
 
 
-export const Link = styled.a`
+export const StyledLink = styled(Link)`
   font-size: 26px;
   font-weight: 600;
   line-height: normal;

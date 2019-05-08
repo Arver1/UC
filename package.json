@@ -50,11 +50,13 @@
     "webpack-stream": "^5.1.1"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.6.0",
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
+    "react-router-dom": "^5.0.0",
     "react-transition-group": "^2.5.0",
     "redux": "^4.0.1",
     "redux-form": "^8.1.0",

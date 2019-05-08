@@ -1,11 +1,11 @@
 import React from 'react';
-import {Link, Abbr} from "./styled";
+import {StyledLink, Abbr} from "./styled";
 
 export const LogoAbbr = ({title = "Межрегиональный центр оценки квалификации электроэнергетики"}) => (
   <Abbr title={title} >
-    <Link href="#">
+    <StyledLink to="/">
       МРЦОК
-    </Link>
+    </StyledLink>
   </Abbr>
 );
 

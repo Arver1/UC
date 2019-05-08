@@ -1,9 +1,11 @@
 import React,{Component} from 'react';
 import {createPortal} from 'react-dom';
-import {delay, Li, A, Ul} from "./styled";
+import {Link} from "react-router-dom";
+import {delay, Li, StyledLink, Ul} from "./styled";
 
-const defaultMenuItems = Array(5).fill("Тестовый пункт меню");
-
+const defaultMenuItems = Array(4).fill("Тестовый пункт меню");
+defaultMenuItems.push("о компании");
+const EntryPointBlock = document.getElementById('app');
 
 export class Menu extends Component {
     state = {
@@ -14,7 +16,6 @@ export class Menu extends Component {
         items: defaultMenuItems
     };
 
-
     handleClick = () => {
         if(this.timerID){
             return;
@@ -24,16 +25,24 @@ export class Menu extends Component {
             checked: !this.state.checked
         });
 
-        this.timerID = setTimeout(()=>{
+        this.timerID = setTimeout(() => {
             this.timerID = null;
-        },delay)
+        }, delay)
     };
 
+    componentDidUpdate(){
+        if(this.state.checked){
+          EntryPointBlock.className = 'limit';
+        }
+        else {
+          EntryPointBlock.className = '';
+        }
+    }
 
     createMenu = (items = [], checked) => {
         return (
-            <Ul checked={checked} doc={this.doc}>
-                {Array.isArray(items) && items.map((it, index)=> <Li key={index}><A>{it}</A></Li>)}
+            <Ul checked={checked}>
+                {Array.isArray(items) && items.map((it, index)=> <Li key={index}><StyledLink to="/about" onClick={this.handleClick}>{it.toUpperCase()}</StyledLink></Li>)}
             </Ul>
         )
     };
