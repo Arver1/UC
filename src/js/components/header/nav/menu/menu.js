@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {delay, Li, StyledLink, Ul} from "./styled";
 
 const defaultMenuItems = Array(4).fill("Тестовый пункт меню");
+defaultMenuItems.unshift("квалификации");
 defaultMenuItems.push("о компании");
 const EntryPointBlock = document.getElementById('app');
 
@@ -42,7 +43,7 @@ export class Menu extends Component {
     createMenu = (items = [], checked) => {
         return (
             <Ul checked={checked}>
-                {Array.isArray(items) && items.map((it, index)=> <Li key={index}><StyledLink to="/about" onClick={this.handleClick}>{it.toUpperCase()}</StyledLink></Li>)}
+                {Array.isArray(items) && items.map((it, index)=> <Li key={index}><StyledLink to="/qualification" onClick={this.handleClick}>{it.toUpperCase()}</StyledLink></Li>)}
             </Ul>
         )
     };

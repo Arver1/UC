@@ -5,6 +5,7 @@ import {RouteList} from "./route-list";
 import {BidList} from "./bid-list";
 import {Certs} from './certs'
 import {Main, Wrapper, Title} from './styled';
+import {Qualification} from "./qualification";
 
 
 const dataRoute = [
@@ -36,7 +37,7 @@ export function PageMain(){
   return (
     <>
       <Route exact path="/" component={Ma} />
-      <Route path="/about" component={About} />
+      <Route path="/qualification" component={Qualification} />
       </>
   )
 }

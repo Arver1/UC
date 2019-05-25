@@ -1,0 +1,1 @@
+export {dataNote} from './qualification';
