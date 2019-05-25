@@ -1,11 +1,13 @@
-import { Qualifications, ProfStandarts } from '../components/pages';
+import { withRouter } from 'react-router-dom';
+import { Qualifications, ProfStandarts, Documents } from '../components/pages';
+
 
 export const defaultMenuItems = [
   {
     order: 1,
     name: 'Квалификации',
     url: '/qualifications',
-    component: Qualifications
+    component: withRouter(Qualifications)
   },
   {
     order: 2,
@@ -16,7 +18,8 @@ export const defaultMenuItems = [
   {
     order: 3,
     name: 'Документы',
-    url: '/documents'
+    url: '/documents',
+    component: Documents
   },
   {
     order: 4,
