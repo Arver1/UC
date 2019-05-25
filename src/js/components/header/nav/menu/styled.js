@@ -1,6 +1,6 @@
-import styled, {keyframes} from 'styled-components';
-import {Link} from 'react-router-dom';
-import {MAIN_COLOR_RED, Roboto} from '../../../styles/index'
+import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
+import { MAIN_COLOR_RED, Roboto } from '../../../styles/index';
 
 
 export const delay = 800;
@@ -31,7 +31,7 @@ export const Ul = styled.ul`
     height: calc(100vh - 84px);
     background: #E0E0E0;
     width: calc(100vw - 25px);
-    animation: ${({checked}) => (checked && menuShow || menuShowReverse)} ${delay}ms forwards;
+    animation: ${({ checked }) => (checked && menuShow || menuShowReverse)} ${delay}ms forwards;
     box-shadow: 7px 5px 20px -8px #000;
     border-top-right-radius: 5px;
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto} from "../styles";
 
-export const Main = styled.main`
+export const StyledMain = styled.main`
   border-bottom: 1px solid ${MAIN_COLOR_RED};
 `;
 

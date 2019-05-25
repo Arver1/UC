@@ -1,1 +1,0 @@
-export {dataNote} from './text';

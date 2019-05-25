@@ -1,13 +1,13 @@
 import React from 'react';
 import {Header} from './header';
-import {Main} from './main';
 import Footer from './main';
+import {RouteList} from "../router-map-list";
 
 function App(){
   return (
     <>
-      <Header />
-      <Main />
+      <Header/>
+      <RouteList/>
     </>
   )
 }

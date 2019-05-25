@@ -1,17 +1,14 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
-import {About} from './about';
 import {RouteList} from "./route-list";
 import {BidList} from "./bid-list";
 import {Certs} from './certs'
-import {Main, Wrapper, Title} from './styled';
-import {Qualification} from "./qualification";
+import {StyledMain, Wrapper, Title} from './styled';
 
 
 const dataRoute = [
   {
     count: 10,
-    name: 'профессиональных стандартов'
+    name: " профессиональных стандартов"
   },
   {
     count: 30,
@@ -19,8 +16,8 @@ const dataRoute = [
   }
 ];
 
-const Ma = () => (
-  <Main>
+export const Main = () => (
+  <StyledMain>
     <Wrapper>
       <Title>
         <span>Профессиональная деятельность</span>
@@ -30,14 +27,5 @@ const Ma = () => (
       <BidList />
       <Certs />
     </Wrapper>
-  </Main>
+  </StyledMain>
 );
-
-export function PageMain(){
-  return (
-    <>
-      <Route exact path="/" component={Ma} />
-      <Route path="/qualification" component={Qualification} />
-      </>
-  )
-}

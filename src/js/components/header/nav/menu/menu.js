@@ -1,11 +1,9 @@
 import React,{Component} from 'react';
 import {createPortal} from 'react-dom';
-import {Link} from "react-router-dom";
 import {delay, Li, StyledLink, Ul} from "./styled";
+import {defaultMenuItems} from "../../../../constants/menu-items";
 
-const defaultMenuItems = Array(4).fill("Тестовый пункт меню");
-defaultMenuItems.unshift("квалификации");
-defaultMenuItems.push("о компании");
+
 const EntryPointBlock = document.getElementById('app');
 
 export class Menu extends Component {
@@ -43,7 +41,7 @@ export class Menu extends Component {
     createMenu = (items = [], checked) => {
         return (
             <Ul checked={checked}>
-                {Array.isArray(items) && items.map((it, index)=> <Li key={index}><StyledLink to="/qualification" onClick={this.handleClick}>{it.toUpperCase()}</StyledLink></Li>)}
+                {Array.isArray(items) && items.map((it, index)=> <Li key={index}><StyledLink to={it.url} onClick={this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>)}
             </Ul>
         )
     };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {MAIN_COLOR_DGRAY, Roboto} from "../../styles";
+import { MAIN_COLOR_DGRAY, Roboto } from '../../styles';
 
 export const Quote = styled.blockquote`
   margin: -20px 0 0;
@@ -15,7 +15,7 @@ export const Quote = styled.blockquote`
     content: '';
     display: block;
     position: absolute;
-    width: 5px;
+    width: 3px;
     height: calc(100% + 20px);
     background: #860809;
     top: -10px;
