@@ -10,10 +10,11 @@ export const Note = ({children}) => <Quote>{children}</Quote>;
 
 
 const BreadCrumbs = ({path}) => {
+	console.log(getBreadCrumbs(path).map);
 		return (
-			<span>
-				{getBreadCrumbs(path)}
-			</span>
+			<div>
+				{getBreadCrumbs(path).map}
+			</div>
 		)
 };
 
