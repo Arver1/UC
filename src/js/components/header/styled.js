@@ -1,5 +1,8 @@
 import styled, { keyframes } from 'styled-components';
-import {HEADER_MOBIL_TOP_PADDING, MAIN_COLOR_RED, MEDIA_DELAY, MEDIA_POINT_1} from '../styles';
+import {
+	HEADER_MOBIL_TOP_PADDING, HEADER_TABLET_TOP_PADDING, MAIN_COLOR_RED, MEDIA_DELAY,
+	MEDIA_POINT_1
+} from '../styles';
 
 const menuStem = keyframes`
 
@@ -40,12 +43,15 @@ export const Header = styled.header`
   margin-bottom: 20px;
   border-bottom: 1px solid ${MAIN_COLOR_RED};
   padding: ${HEADER_MOBIL_TOP_PADDING} 0 10px;
-  background: linear-gradient(to bottom, ${MAIN_COLOR_RED} ${HEADER_MOBIL_TOP_PADDING}, #fff ${HEADER_MOBIL_TOP_PADDING});
+  background: linear-gradient(to bottom, ${MAIN_COLOR_RED} ${HEADER_TABLET_TOP_PADDING}, #fff ${HEADER_MOBIL_TOP_PADDING});
+  background-size: 100% 200%;
+  background-position-y: -10px;
   transition: ${MEDIA_DELAY};
   
   @media (min-width: ${MEDIA_POINT_1}) {
-  	padding-bottom: 20px;
+  	background-position-y: 0;
   	transition: ${MEDIA_DELAY};
+  	padding: calc(${HEADER_TABLET_TOP_PADDING} - 8px) 0 10px;
   }
 `;
 

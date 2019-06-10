@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HEADER_MOBIL_TOP_PADDING, Roboto } from '../../styles';
+import {HEADER_MOBIL_TOP_PADDING, MEDIA_DELAY, MEDIA_POINT_1, Roboto} from '../../styles';
 
 
 export const Section = styled.section`
@@ -26,10 +26,17 @@ export const Number = styled.a`
   display: inline-block;
   vertical-align: top;
   margin-left: 10px;
+  transition: ${MEDIA_DELAY};
+  
+  @media (min-width: ${MEDIA_POINT_1}) {
+  	font-size: 15px;
+  	transition: ${MEDIA_DELAY};
+  	margin-left: 20px;
+  }
 `;
 
 export const Time = styled.small`
-  margin: 0 0 5px;
+  margin: 0 10px 5px 0;
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
@@ -39,11 +46,17 @@ export const Time = styled.small`
   display: inline-block;
   vertical-align: top;
   order: -1;
-  margin-right: 10px;
+  transition: ${MEDIA_DELAY};
+  
+  @media (min-width: ${MEDIA_POINT_1}) {
+  	font-size: 15px;
+  	transition: ${MEDIA_DELAY};
+  	margin: 0 20px 5px 0;
+  }
 `;
 
 export const Address = styled.p`
-  margin: 0 0 5px auto;
+  margin: 20px 0 5px auto;
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
@@ -52,6 +65,5 @@ export const Address = styled.p`
   text-align: right;
   display: inline-block;
   vertical-align: top;
-  margin-top: 20px;
   width: 100%;
 `;

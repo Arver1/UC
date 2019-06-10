@@ -22,7 +22,7 @@ export class Menu extends Component {
 		window.addEventListener('resize', (e) => {
 			if(document.body.clientWidth >= 570) {
 				this.setState({
-					menuCount: ((document.body.clientWidth - 570)/ 200 ^ 0) + 1
+					menuCount: ((document.body.clientWidth - 570)/ 210 ^ 0) + 1
 				});
 			} else if(document.body.clientWidth < 540) {
 				this.setState({
@@ -57,7 +57,7 @@ export class Menu extends Component {
 
 	createMenu = (items = [], count = items.length, resetFlag, handleClick) => (
 		<>
-			{Array.isArray(items) && items.map((it, index) => <Li key={index}><StyledLink resetFlag={resetFlag} to={it.url} onClick={handleClick || this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>).slice(0, count)}
+			{Array.isArray(items) && items.map((it, index) => <Li resetFlag={resetFlag} key={index}><StyledLink resetFlag={resetFlag} to={it.url} onClick={handleClick || this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>).slice(0, count)}
 			</>
 	);
 	

@@ -36,7 +36,7 @@ export const Ul = styled.ul`
     justify-content: flex-start;
     flex-direction: column;
     position: absolute;
-    top: 84px;
+    top: 139px;
     height: calc(100vh - 84px);
     background: #E0E0E0;
     width: calc(100vw - 25px);
@@ -44,8 +44,6 @@ export const Ul = styled.ul`
     box-shadow: 7px 5px 20px -8px #000;
     border-top-right-radius: 5px;
 `;
-
-const animation = ({animate}) => animate ? (`${menuOpacity} ${delay}ms forwards`) : null;
 
 export const StyledLink = styled(Link)`
     display: inline-block;
@@ -91,15 +89,15 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Li = styled.li`
-	padding: 0 50px;
 	margin-top: 15px;
 	position: relative;
+	padding: 0 ${({resetFlag}) => resetFlag ? '20px' : '50px'};
 	
 	&::before {
 		content: '';
 		display: block;
 		position: absolute;
-		left: 25px;
+		left: 0;
 		transform: rotate(45deg);
 		top: 30%;
 		background-color: ${MAIN_COLOR_RED};
