@@ -1,5 +1,3 @@
-import {INC_GOOD, DEC_GOOD, DELETE_GOOD} from "../constants";
-
 export function incGood(id) {
   return {
     type: INC_GOOD,

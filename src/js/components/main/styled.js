@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-import {MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto} from "../styles";
+import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto } from '../styles';
 
 export const StyledMain = styled.main`
   border-bottom: 1px solid ${MAIN_COLOR_RED};
 `;
 
 export const Wrapper = styled.div`
-  max-width: 415px;
-  min-width: 320px;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0 10px;
