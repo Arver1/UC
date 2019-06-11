@@ -20,7 +20,7 @@ export const H1 = styled.h1`
   
   @media (min-width: ${MEDIA_POINT_1}) {
   	transition: ${MEDIA_DELAY};
-  	font-size: 12px;
+  	font-size: 11px;
   	padding-left: 91px;
   }
 `;

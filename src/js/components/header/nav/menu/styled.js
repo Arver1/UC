@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MAIN_COLOR_RED, Roboto} from '../../../styles/index';
+import {MEDIA_DELAY, MEDIA_POINT_2} from "../../../styles";
 
 
 export const delay = 800;
@@ -89,9 +90,13 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Li = styled.li`
-	margin-top: 15px;
+	margin-top: ${({resetFlag}) => resetFlag ? '0' : '15px'};
 	position: relative;
 	padding: 0 ${({resetFlag}) => resetFlag ? '20px' : '50px'};
+	
+	&:last-child {
+		padding-right: 0;
+	}
 	
 	&::before {
 		content: '';
@@ -101,8 +106,8 @@ export const Li = styled.li`
 		transform: rotate(45deg);
 		top: 30%;
 		background-color: ${MAIN_COLOR_RED};
-		width: 10px;
-		height: 10px;
+		width: 8px;
+		height: 8px;
 	}
 `;
 
@@ -110,6 +115,12 @@ export const MainNavItems = styled.ul`
 	order: -1;
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0 0 0 auto;
+	margin: 0 0 0 140px;
 	padding: 0;
+	transition: ${MEDIA_DELAY};
+	
+	@media (min-width: ${MEDIA_POINT_2}){
+		margin: 0 0 0 80px;
+		transition: ${MEDIA_DELAY};
+	}
 `;

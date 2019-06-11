@@ -21,5 +21,5 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Abbr = styled.abbr`
-  order: -1;
+  order: -2;
 `;

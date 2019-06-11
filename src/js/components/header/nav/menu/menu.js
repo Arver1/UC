@@ -4,6 +4,7 @@ import {
 	delay, Li, StyledLink, Ul, MainNavItems
 } from './styled';
 import { defaultMenuItems } from '../../../../constants/menu-items';
+import {MEDIA_POINT_2} from "../../../styles";
 
 
 const EntryPointBlock = document.getElementById('app');
@@ -11,7 +12,7 @@ const EntryPointBlock = document.getElementById('app');
 export class Menu extends Component {
 	state = {
 		checked: false,
-		menuCount: ((document.body.clientWidth - 570) / 200 ^ 0) + 1
+		menuCount: 0
 	};
 
 	static defaultProps = {
@@ -20,16 +21,35 @@ export class Menu extends Component {
 
 	componentDidMount() {
 		window.addEventListener('resize', (e) => {
-			if(document.body.clientWidth >= 570) {
+			if(document.body.clientWidth >= 630) {
+				if(document.body.clientWidth >= MEDIA_POINT_2.slice(0, -2)) {
+					this.setState({
+						menuCount: ((document.body.clientWidth - 630) / 150) + 2
+					});
+				} else
 				this.setState({
-					menuCount: ((document.body.clientWidth - 570)/ 210 ^ 0) + 1
+					menuCount: ((document.body.clientWidth - 630)/ 150)+ 1
 				});
-			} else if(document.body.clientWidth < 540) {
+			} else if(document.body.clientWidth < 630) {
 				this.setState({
 					menuCount: 0
 				});
 			}
 		});
+		if (document.body.clientWidth >= 630) {
+			if (document.body.clientWidth >= MEDIA_POINT_2.slice(0, -2)) {
+				this.setState({
+					menuCount: ((document.body.clientWidth - 630) / 150) + 2
+				});
+			} else
+				this.setState({
+					menuCount: ((document.body.clientWidth - 630) / 150) + 1
+				});
+		} else if (document.body.clientWidth < 630) {
+			this.setState({
+				menuCount: 0
+			});
+		}
 	}
 
 	componentDidUpdate() {
@@ -82,9 +102,12 @@ export class Menu extends Component {
 				<input type="checkbox" id="burger_menu" checked={checked} readOnly />
 				<label htmlFor="burger_menu" onClick={this.handleClick}>Открыть меню</label>
 				{createPortal(menu, document.querySelector('body'))}
-				<MainNavItems>
-					{this.createMenu(items, menuCount, true, ()=>{})}
-				</MainNavItems>
+				{menuCount ? (
+					<MainNavItems>
+						{this.createMenu(items, menuCount, true, () => {
+						})}
+					</MainNavItems>
+				) : null}
 				</>
 		);
 	}

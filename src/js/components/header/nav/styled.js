@@ -89,6 +89,7 @@ export const MenuWrapper = styled.div`
   
   transition: ${MEDIA_DELAY};
   @media (min-width: ${MEDIA_POINT_2}) {
+  
   	input {
   		opacity: 0;
   		display: none;
