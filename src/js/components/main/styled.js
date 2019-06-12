@@ -8,7 +8,7 @@ export const StyledMain = styled.main`
 export const Wrapper = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 20px 10px 0;
 `;
 
 export const Title = styled.h2`
@@ -29,6 +29,8 @@ export const Title = styled.h2`
     font-family: ${Roboto};
     text-transform: uppercase;
     margin-bottom: 20px;
+    display: inline-block;
+    max-width: 350px;
   }
   
   & > strong {
@@ -37,5 +39,7 @@ export const Title = styled.h2`
     line-height: normal;
     color: ${MAIN_COLOR_DGRAY};
     font-family: ${Roboto};
+    display: inline-block;
+    max-width: 350px;
   }
 `;

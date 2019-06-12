@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MAIN_COLOR_RED, Roboto} from '../../../styles/index';
-import {MEDIA_DELAY, MEDIA_POINT_2} from "../../../styles";
+import { MAIN_COLOR_RED, Roboto } from '../../../styles/index';
+import { MEDIA_DELAY, MEDIA_POINT_2 } from '../../../styles';
 
 
 export const delay = 800;
@@ -19,31 +19,34 @@ const menuShow = keyframes`
         left: -100%;
     }
     to {
-        left: 0%;
+        left: 0;
     }
 `;
 
 const menuShowReverse = keyframes`
     from {
-        left: 0%;
+        left: 0;
     }
     to {
         left: -100%;
     }
 `;
+export const Section = styled.section`
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 84px;
+  height: calc(100vh - 84px);
+  background: #E0E0E0;
+  width: calc(100vw - 25px);
+  animation: ${({ checked }) => (checked && menuShow || menuShowReverse)} ${delay}ms forwards;
+  box-shadow: 7px 5px 20px -8px #000;
+  border-top-right-radius: 5px;
+`;
 
-export const Ul = styled.ul`
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    position: absolute;
-    top: 139px;
-    height: calc(100vh - 84px);
-    background: #E0E0E0;
-    width: calc(100vw - 25px);
-    animation: ${({ checked }) => (checked && menuShow || menuShowReverse)} ${delay}ms forwards;
-    box-shadow: 7px 5px 20px -8px #000;
-    border-top-right-radius: 5px;
+export const UL = styled.ul`
+  margin-bottom: 50px;
 `;
 
 export const StyledLink = styled(Link)`
@@ -63,7 +66,7 @@ export const StyledLink = styled(Link)`
     &:hover {
         color: ${MAIN_COLOR_RED};
         transition: all 0.3s ease;
-        padding-left: ${({resetFlag = false}) => resetFlag ? "0" : "10px"};
+        padding-left: ${({ resetFlag = false }) => (resetFlag ? '0' : '10px')};
     }
     
     &:hover::before {
@@ -89,20 +92,29 @@ export const StyledLink = styled(Link)`
     }
 `;
 
+export const Address = styled.p`
+  margin-top: 60px;
+  padding: 0 50px 0 130px;
+  text-align: left;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  font-family: ${Roboto};
+`;
+
 export const Li = styled.li`
-	margin-top: ${({resetFlag}) => resetFlag ? '0' : '15px'};
+	margin-top: ${({ resetFlag }) => (resetFlag ? '0' : '15px')};
 	position: relative;
-	padding: 0 ${({resetFlag}) => resetFlag ? '20px' : '50px'};
+	padding: 0 ${({ resetFlag }) => (resetFlag ? '20px' : '50px')};
 	
-	&:last-child {
-		padding-right: 0;
-	}
 	
 	&::before {
 		content: '';
 		display: block;
 		position: absolute;
-		left: 0;
+		left: 20px;
 		transform: rotate(45deg);
 		top: 30%;
 		background-color: ${MAIN_COLOR_RED};

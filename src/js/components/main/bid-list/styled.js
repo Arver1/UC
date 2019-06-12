@@ -22,7 +22,7 @@ export const ListItem = styled.li`
   & > img {
     order: -1;
     align-self: flex-start;
-  } 
+  }
 `;
 
 export const Wrapper = styled.div`

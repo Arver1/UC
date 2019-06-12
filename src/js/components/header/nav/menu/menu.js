@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import {
-	delay, Li, StyledLink, Ul, MainNavItems
+	delay, Li, StyledLink, Section, MainNavItems, Address,UL
 } from './styled';
 import { defaultMenuItems } from '../../../../constants/menu-items';
 import {MEDIA_POINT_2} from "../../../styles";
+import {Social} from "../../../common/social";
 
 
 const EntryPointBlock = document.getElementById('app');
+const address = '143040 МО г.Голицыно Генерала Ремезова, д.6';
 
 export class Menu extends Component {
 	state = {
@@ -91,11 +93,12 @@ export class Menu extends Component {
 		const { items } = this.props;
 		const { checked, menuCount } = this.state;
 		const menu = (
-			<div>
-				<Ul checked={checked}>
+			<Section checked={checked}>
+				<UL>
 					{this.createMenu(items)}
-				</Ul>
-  </div>
+				</UL>
+				<Social />
+			</Section>
 		);
 		return (
 			<>

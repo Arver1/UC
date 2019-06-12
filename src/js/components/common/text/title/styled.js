@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import {MAIN_COLOR_DGRAY, Roboto} from "../../../styles";
+import styled from 'styled-components';
+import { MAIN_COLOR_DGRAY, Roboto } from '../../../styles';
 
 const h2 = styled.h2`
   display: flex;

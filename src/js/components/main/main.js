@@ -17,14 +17,11 @@ const dataRoute = [
   }
 ];
 
-const Modal = () => <div>Test</div>;
+const Modal = <div>Test</div>;
 
 export const Main = () => (
   <StyledMain>
     <Wrapper>
-	    <button onClick = {()=> {
-		    createPortal(Modal, document.querySelector('body'))
-      }}>Click Me</button>
       <Title>
         <span>Профессиональная деятельность</span>
         <strong>должна начинаться с подтверждения оценки квалификации</strong>

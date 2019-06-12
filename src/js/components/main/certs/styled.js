@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {MAIN_COLOR_DGRAY, Roboto} from "../../styles";
+import { MAIN_COLOR_DGRAY, Roboto } from '../../styles';
 
 export const Section = styled.section`
   display: flex;
@@ -7,7 +7,8 @@ export const Section = styled.section`
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
+  max-width: 300px;
 `;
 
 export const Title = styled.h2`
@@ -19,7 +20,7 @@ export const Title = styled.h2`
   text-transform: uppercase;
   text-align: center;
   margin: 0 10px 20px;
-  padding: 20px 0 0; 
+  padding: 20px 0 0;
 `;
 
 export const Link = styled.a`

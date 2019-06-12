@@ -1,8 +1,9 @@
 import React from 'react';
-import {Route, BrowserRouter} from 'react-router-dom';
-import {defaultMenuItems} from "./constants/menu-items";
-import {Main} from "./components/main";
-import {Header} from "./components/header";
+import {Route} from 'react-router-dom';
+import {defaultMenuItems} from './constants/menu-items';
+import {Main} from './components/main';
+import {Header} from './components/header';
+import {Modal} from './components/common';
 
 const getPages = menuItems => {
 	return menuItems.map(it => <Route path={it.url} component={it.component}/>)
@@ -10,10 +11,11 @@ const getPages = menuItems => {
 
 export function RouterList() {
 	return (
-		<BrowserRouter>
+		<>
 			<Route path="/" component={Header}/>
+			<Route path="/" component={Modal}/>
 			<Route exact path="/" component={Main}/>
 			{getPages(defaultMenuItems)}
-		</BrowserRouter>
+		</>
 	)
 }
