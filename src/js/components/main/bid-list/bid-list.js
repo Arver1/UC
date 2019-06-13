@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
+import {noop} from 'lodash';
 import {List, ListItem, Wrapper} from './styled';
-import {noop} from "../../../constants/common";
 import {showModal} from "../../common";
 
 @connect(null, {showModal})

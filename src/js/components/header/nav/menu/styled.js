@@ -1,18 +1,17 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MAIN_COLOR_RED, Roboto } from '../../../styles/index';
-import { MEDIA_DELAY, MEDIA_POINT_2 } from '../../../styles';
 
 
-export const delay = 800;
+export const delay = 500;
 const menuOpacity = keyframes`
-
- 0% {
- 	opacity: 0;
- }
- 100% {
- 	opacity: 1;
- }
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
 `;
 const menuShow = keyframes`
     from {
@@ -39,8 +38,9 @@ export const Section = styled.section`
   top: 84px;
   height: calc(100vh - 84px);
   background: #E0E0E0;
-  width: calc(100vw - 25px);
-  animation: ${({ checked }) => (checked && menuShow || menuShowReverse)} ${delay}ms forwards;
+  width: 82vw;
+  left: -100%;
+  animation: ${({ checked, menuCount }) => (menuCount && (checked && menuShow || menuShowReverse))} ${delay}ms forwards;
   box-shadow: 7px 5px 20px -8px #000;
   border-top-right-radius: 5px;
 `;
@@ -85,29 +85,17 @@ export const StyledLink = styled(Link)`
         background-position: 100%;
         background-size: 200% 100%;
         transition: all 1s ease;
-    }
+        }
     
     &:active {
     	color: ${MAIN_COLOR_RED};
     }
 `;
 
-export const Address = styled.p`
-  margin-top: 60px;
-  padding: 0 50px 0 130px;
-  text-align: left;
-  position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-  color: #000;
-  font-family: ${Roboto};
-`;
-
 export const Li = styled.li`
-	margin-top: ${({ resetFlag }) => (resetFlag ? '0' : '15px')};
-	position: relative;
-	padding: 0 ${({ resetFlag }) => (resetFlag ? '20px' : '50px')};
+  margin-top: 15px;
+  position: relative;
+  padding: 0 50px;
 	
 	
 	&::before {
@@ -120,19 +108,5 @@ export const Li = styled.li`
 		background-color: ${MAIN_COLOR_RED};
 		width: 8px;
 		height: 8px;
-	}
-`;
-
-export const MainNavItems = styled.ul`
-	order: -1;
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 0 0 140px;
-	padding: 0;
-	transition: ${MEDIA_DELAY};
-	
-	@media (min-width: ${MEDIA_POINT_2}){
-		margin: 0 0 0 80px;
-		transition: ${MEDIA_DELAY};
 	}
 `;

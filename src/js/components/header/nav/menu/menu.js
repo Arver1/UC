@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { createPortal } from 'react-dom';
+import { noop } from 'lodash';
 import {
 	delay, Li, StyledLink, Section, MainNavItems, Address,UL
 } from './styled';
 import { defaultMenuItems } from '../../../../constants/menu-items';
 import {MEDIA_POINT_2} from "../../../styles";
 import {Social} from "../../../common/social";
+import { FULL_LIMIT } from "../../../../constants/common";
+import { limitApp} from "../../../../AC/actions";
 
 
-const EntryPointBlock = document.getElementById('app');
 const address = '143040 МО г.Голицыно Генерала Ремезова, д.6';
 
+@connect(null, {limitApp})
 export class Menu extends Component {
 	state = {
 		checked: false,
@@ -20,66 +24,41 @@ export class Menu extends Component {
 	static defaultProps = {
 		items: defaultMenuItems,
 	};
-
-	componentDidMount() {
-		window.addEventListener('resize', (e) => {
-			if(document.body.clientWidth >= 630) {
-				if(document.body.clientWidth >= MEDIA_POINT_2.slice(0, -2)) {
-					this.setState({
-						menuCount: ((document.body.clientWidth - 630) / 150) + 2
-					});
-				} else
-				this.setState({
-					menuCount: ((document.body.clientWidth - 630)/ 150)+ 1
-				});
-			} else if(document.body.clientWidth < 630) {
-				this.setState({
-					menuCount: 0
-				});
-			}
-		});
-		if (document.body.clientWidth >= 630) {
-			if (document.body.clientWidth >= MEDIA_POINT_2.slice(0, -2)) {
-				this.setState({
-					menuCount: ((document.body.clientWidth - 630) / 150) + 2
-				});
-			} else
-				this.setState({
-					menuCount: ((document.body.clientWidth - 630) / 150) + 1
-				});
-		} else if (document.body.clientWidth < 630) {
+	
+	componentDidUpdate(){
+		if(!this.state.menuCount) {
 			this.setState({
-				menuCount: 0
-			});
+				menuCount: 1
+			})
 		}
 	}
-
-	componentDidUpdate() {
-		if (this.state.checked) {
-			EntryPointBlock.className = 'limit';
-		} else {
-			EntryPointBlock.className = '';
-		}
-	}
-
+	
+	
 	handleClick = () => {
-		console.log('click')
+		const { limitApp = noop } = this.props;
+		const { checked } = this.state;
+		
 		if (this.timerID) {
 			return;
 		}
-
+		
+		if(checked) {
+			limitApp(0);
+		} else {
+			limitApp(FULL_LIMIT);
+		}
 		this.setState({
-			checked: !this.state.checked,
+			checked: !checked,
 		});
-
+		
 		this.timerID = setTimeout(() => {
 			this.timerID = null;
 		}, delay);
 	};
 
-	createMenu = (items = [], count = items.length, resetFlag, handleClick) => (
+	createMenu = (items = [], count = items.length) => (
 		<>
-			{Array.isArray(items) && items.map((it, index) => <Li resetFlag={resetFlag} key={index}><StyledLink resetFlag={resetFlag} to={it.url} onClick={handleClick || this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>).slice(0, count)}
+			{Array.isArray(items) && items.map((it, index) => <Li key={index}><StyledLink to={it.url} onClick={this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>).slice(0, count)}
 			</>
 	);
 	
@@ -93,25 +72,21 @@ export class Menu extends Component {
 		const { items } = this.props;
 		const { checked, menuCount } = this.state;
 		const menu = (
-			<Section checked={checked}>
+			<Section checked={checked} menuCount={menuCount}>
 				<UL>
 					{this.createMenu(items)}
 				</UL>
 				<Social />
 			</Section>
 		);
+		
+		const EntryPointBlock = document.getElementById('app');
 		return (
 			<>
 				<input type="checkbox" id="burger_menu" checked={checked} readOnly />
 				<label htmlFor="burger_menu" onClick={this.handleClick}>Открыть меню</label>
-				{checked && createPortal(menu, document.querySelector('body'))}
-				{menuCount ? (
-					<MainNavItems>
-						{this.createMenu(items, menuCount, true, () => {
-						})}
-					</MainNavItems>
-				) : null}
-				</>
+				{createPortal(menu, EntryPointBlock)}
+			</>
 		);
 	}
 }

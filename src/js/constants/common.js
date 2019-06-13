@@ -1,6 +1,5 @@
 export const SHOW_MODAL = 'SHOW_MODAL';
-export const noop = () => {};
-
+export const FULL_LIMIT = 100;
 
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/mcoq.ru/?hl=ru',

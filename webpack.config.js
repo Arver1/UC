@@ -3,7 +3,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const PATHS = {
   source: PATH.join(__dirname, 'src/js'),
-  build: PATH.join(__dirname, 'build/src/js')
+  build: PATH.join(__dirname, 'build/src/js'),
 };
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV.trim() === 'development';
@@ -20,15 +20,15 @@ module.exports = {
   },
 
   plugins: [
-    new CaseSensitivePathsPlugin()
+    new CaseSensitivePathsPlugin(),
   ],
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
-      }
-    ]
+        use: 'babel-loader',
+      },
+    ],
   },
 };

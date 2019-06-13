@@ -10,28 +10,15 @@ export const Section = styled.section`
 export const SocialItem = styled.a`
   display: inline-block;
   vertical-align: top;
-	width: 30px;
-	height: 30px;
-	background: url("/src/img/social-sprite.png") 32px 32px;
-	border-radius: 50%;
-	
-	& + & {
-		margin-left: 10px;
-	}
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  
+  & + & {
+  margin-left: 10px;
+  }
 	
 	&:hover {
-		opacity: 0.5;
-	}
-	
-	&:nth-child(2) {
-		background-position: 75px 32px;
-	}
-	
-	&:nth-child(3) {
-		background-position: 120px 32px;
-	}
-	
-	&:nth-child(4) {
-		background-position: 32px 66px;
+	  opacity: 0.5;
 	}
 `;
