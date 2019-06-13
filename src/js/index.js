@@ -1,27 +1,26 @@
 import React from 'react';
 import { render } from 'react-dom';
-import {Provider} from 'react-redux';
-import store, {history} from "./store";
-import {RouterList} from './router-map-list';
-import {ConnectedRouter} from 'connected-react-router'
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import store, { history } from './store';
+import RouterList from './router-map-list';
+import { FULL_LIMIT } from './constants/common';
+
+const EntryPointBlock = document.getElementById('app');
+
+store.subscribe(() => {
+  const state = store.getState();
+  const { appSize: { limit } } = state;
+
+  EntryPointBlock.className = limit === FULL_LIMIT ? 'limit' : '';
+});
+
 
 
 render(
-	<Provider store={store}>
-		<ConnectedRouter history={history}>
-		<RouterList />
-		</ConnectedRouter>
-	</Provider>
-	, document.getElementById('app'));
-
-window.addEventListener('resize', (e) => {
-	if (document.body.clientWidth >= 570) {
-		this.setState({
-			menuCount: ((document.body.clientWidth - 570) / 200 ^ 0) + 1
-		});
-	} else if (document.body.clientWidth < 540) {
-		this.setState({
-			menuCount: 0
-		});
-	}
-});
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <RouterList />
+    </ConnectedRouter>
+  </Provider>, EntryPointBlock,
+);
