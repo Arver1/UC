@@ -104,7 +104,7 @@ export class Menu extends Component {
 			<>
 				<input type="checkbox" id="burger_menu" checked={checked} readOnly />
 				<label htmlFor="burger_menu" onClick={this.handleClick}>Открыть меню</label>
-				{createPortal(menu, document.querySelector('body'))}
+				{checked && createPortal(menu, document.querySelector('body'))}
 				{menuCount ? (
 					<MainNavItems>
 						{this.createMenu(items, menuCount, true, () => {

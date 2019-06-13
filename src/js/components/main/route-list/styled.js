@@ -23,6 +23,7 @@ export const ListItem = styled.li`
   width: 280px;
   box-sizing: border-box;
   text-overflow: ellipsis;
+  vertical-align: middle;
   
   & > b {
     font-size: 14px;
@@ -30,11 +31,12 @@ export const ListItem = styled.li`
     line-height: normal;
     color: #000;
     font-family: ${Roboto};
+    vertical-align: middle;
   }
   
   & > .icon {
     position: absolute;
-    bottom: 2px;
     left: 0;
+    bottom: 2px;
   }
 `;
