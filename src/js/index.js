@@ -8,13 +8,12 @@ import { FULL_LIMIT } from './constants/common';
 import { get } from './constants';
 
 
-const EntryPointBlock = document.getElementById('app');
-
 store.subscribe(() => {
   const state = store.getState();
   const limit = get(state, 'appSize.limit');
 
-  EntryPointBlock.className = limit === FULL_LIMIT ? 'limit' : '';
+  // required due to a bug in mobil redux form
+  document.body.className = limit === FULL_LIMIT ? 'limit' : '';
 });
 
 
@@ -23,5 +22,5 @@ render(
     <ConnectedRouter history={history}>
       <RouterList />
     </ConnectedRouter>
-  </Provider>, EntryPointBlock,
+  </Provider>, document.getElementById('app'),
 );

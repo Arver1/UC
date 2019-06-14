@@ -31,7 +31,8 @@ export class Header extends Component {
 					{title}
 				</H2>
 				<Button onClick={() => {
-					this.props.onClick();
+					closeModal();
+					// this.props.onClick();
 				}} />
 			</Wrapper>
 	}

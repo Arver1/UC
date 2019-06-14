@@ -39,8 +39,13 @@
       border: 0;
     }
     .limit {
-      height: 100vh;
+      max-height: 100vh;
       overflow: hidden;
+    }
+
+    /* Input field iOS Safari bug */
+    input {
+      -webkit-user-select: text;
     }
   </style>
 </head>
