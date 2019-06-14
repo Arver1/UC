@@ -4,6 +4,7 @@ import { createBrowserHistory } from 'history';
 import { connectRouter } from 'connected-react-router';
 import { showModalReducer } from '../components/common/modal/reducer';
 import { limitReducer } from '../reducer';
+import { showNotificationReducer } from '../components/common/notification/reducer';
 
 
 export const history = createBrowserHistory();
@@ -13,6 +14,7 @@ const rootReducer = hist => combineReducers({
   modal: showModalReducer,
   router: connectRouter(hist),
   appSize: limitReducer,
+  notifications: showNotificationReducer,
 });
 
 

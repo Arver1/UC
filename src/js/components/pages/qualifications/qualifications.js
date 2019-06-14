@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import { get } from 'lodash';
 import { Title } from '../../common';
 import { dataNote } from '../../../constants/qualifications';
 import { Quote } from './styled';
 import { getBreadCrumbs } from '../../../utils';
+import { get } from '../../../constants';
 
 export const getQualityList = () => null;
 export const Note = ({ children }) => <Quote>{children}</Quote>;

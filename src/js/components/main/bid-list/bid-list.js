@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {noop} from 'lodash';
 import {List, ListItem, Wrapper} from './styled';
 import {showModal} from "../../common";
+import {noop} from "../../../constants";
 
 @connect(null, {showModal})
 export class BidList extends Component {

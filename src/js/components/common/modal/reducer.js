@@ -7,12 +7,12 @@ export const showModalReducer = handleActions(
   {
     [combineActions(showModal)]: (state, { payload: { name } }) => ({
 	    ...state,
-	    modalName: name
+	    modalName: name,
     }),
 	  [combineActions(closeModal)]: state => ({
 		  ...state,
-		  modalName: ''
-	  })
+		  modalName: '',
+	  }),
   },
-  defaultState
+  defaultState,
 );

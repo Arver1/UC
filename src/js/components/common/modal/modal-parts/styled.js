@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto } from '../../../styles';
 
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-content: center;

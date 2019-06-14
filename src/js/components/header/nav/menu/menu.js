@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createPortal } from 'react-dom';
-import { noop } from 'lodash';
 import {
 	delay, Li, StyledLink, Section, MainNavItems, Address,UL
 } from './styled';
@@ -10,6 +9,7 @@ import {MEDIA_POINT_2} from "../../../styles";
 import {Social} from "../../../common/social";
 import { FULL_LIMIT } from "../../../../constants/common";
 import { limitApp} from "../../../../AC/actions";
+import {noop} from "../../../../constants";
 
 
 const address = '143040 МО г.Голицыно Генерала Ремезова, д.6';
