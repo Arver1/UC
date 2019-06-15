@@ -15,6 +15,43 @@ export class IndivideForm1 extends React.Component {
   handleChange = (e) => {
     const { value } = e.target;
     
+    const stateVal = this.state.value;
+    if(value.length < stateVal.length) {
+    	let i = 0;
+    	while(value[i] === stateVal[i]){
+    		i++;
+	    }
+	    console.log('value', value.length);
+	    console.log('stateVal', stateVal.length);
+	    console.log('index', i);
+	    const formatValue = stateVal.split('');
+	    if(formatValue[i] === '-' || formatValue[i] ===')' || formatValue[i] === '(') {
+		    return this.setState({
+			    value: formatValue.join('')
+		    }, () => {
+			    if (i) {
+			    	const a = i;
+				    this.telephoneRef.current.selectionStart = a < 3 ? 3 : a;
+				    this.telephoneRef.current.selectionEnd = a < 3 ? 3 : a;
+			    }
+		    })
+	    }
+	    console.log('before', formatValue);
+	    
+	    formatValue[i] = '_';
+	
+	    console.log('after', formatValue);
+	    return this.setState({
+		    value: formatValue.join('')
+	    }, () => {
+		    if (i) {
+			    this.telephoneRef.current.selectionStart = i
+			    this.telephoneRef.current.selectionEnd = i;
+		    }
+	    })
+    }
+	  console.log('value', value);
+   console.log('this.state.value', this.state.value)
    const formatValue = value.split('').reduce((acc, it, index) => {
 		  // console.log('acc', acc);
 		  // console.log('it', it);
