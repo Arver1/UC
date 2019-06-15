@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { reduxForm, getFormValues} from 'redux-form';
 import { connect } from 'react-redux';
 import { Form, Span, Label, Sup, StyledField } from './styled';
@@ -11,6 +11,7 @@ const telephoneMask = ['+', '7', '(', '_', '_', '_', ')', '-', '_', '_', '_', '-
 @connect(state=> ({
 	formValues: getFormValues('bid_form_f')(state),
 	notifications: state.notifications
+	
 }), { showNotification })
 @reduxForm({
 	form: 'bid_form_f',
@@ -20,7 +21,8 @@ const telephoneMask = ['+', '7', '(', '_', '_', '_', ')', '-', '_', '_', '_', '-
 })
 export class IndivideForm extends Component {
 	
-	telephoneMask = telephoneMask
+	telephoneMask = telephoneMask;
+	telephoneRef = createRef();
 	
 	normalizeName = (fieldName, validSymbols) => (value = '') => {
 		const {showNotification, notifications: { msg }} = this.props;
@@ -33,19 +35,25 @@ export class IndivideForm extends Component {
 		const { showNotification } = this.props;
 		
 		return value.split('').reduce((acc, it, index) => {
-			if(index < 2) return acc;
+			// console.log('acc', acc);
+			// console.log('it', it);
+			// console.log('index', index);
+			
+			
+			if(index < 3) return acc;
 			if(it === this.telephoneMask[index]) return acc+ this.telephoneMask[index];
 			else if(isNaN(+it)) {
 				showNotification(`В поле ТЕЛЕФОН допустимы только цифры`);
 				return (acc + this.telephoneMask[index]).slice(0,17);
 			} else {
-				acc = (acc + this.telephoneMask[index]).slice(0, 17);
-				console.log('acc', acc);
-				return acc.replace('_', it);
+				acc = (acc + this.telephoneMask[index]).slice(0, 17).replace('_', it);
+				return acc;
 			}
 
-		}, '+7');
+		}, '+7(');
 	};
+	
+	
 	
 	render(){
 		const { formValues } = this.props;
@@ -76,8 +84,18 @@ export class IndivideForm extends Component {
 				</Label>
 				<Label>
 					<Span>Телефон<Sup>*</Sup></Span>
-					<StyledField size="14" name="telephone" component="input" type="text"
-					        normalize={this.normalizeTelephone} disabled={false && afterLastNameActive}/>
+					<StyledField size="14" name="telephone" component="input" type="text" value={this.telephoneValue}
+					        normalize={this.normalizeTelephone} ref={this.telephoneRef} onChange={(e)=> {
+					        	console.log(e.target.value)
+					   //      	e.preventDefault();
+					   //      this.setState({
+						//         up: !this.state.up
+					   //      }, () => {
+						//         e.target.selectionStart = this.cursorPosition;
+						//         e.target.selectionEnd = this.cursorPosition;
+					   //      });
+						// console.log(e)
+					}} disabled={false && afterLastNameActive}/>
 				</Label>
 			</Form>
 		)
