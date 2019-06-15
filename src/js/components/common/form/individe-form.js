@@ -6,6 +6,8 @@ import { showNotification } from '../notification';
 import {get} from "../../../constants";
 
 
+const telephoneMask = ['+', '7', '(', '_', '_', '_', ')', '-', '_', '_', '_', '-', '_', '_', '-', '_', '_'];
+
 @connect(state=> ({
 	formValues: getFormValues('bid_form_f')(state),
 	notifications: state.notifications
@@ -13,10 +15,12 @@ import {get} from "../../../constants";
 @reduxForm({
 	form: 'bid_form_f',
 	initialValues: {
-		telephone: '+7'
+		telephone: '+7(___)___-__-__'
 	}
 })
 export class IndivideForm extends Component {
+	
+	telephoneMask = telephoneMask
 	
 	normalizeName = (fieldName, validSymbols) => (value = '') => {
 		const {showNotification, notifications: { msg }} = this.props;
@@ -25,8 +29,22 @@ export class IndivideForm extends Component {
 		return formatValue && formatValue[0].toUpperCase() + formatValue.slice(1, 19);
 	};
 	
-	normalizeTelephone = (value = '') => {
-		return value;
+	normalizeTelephone = (value = '', previosValue, all, previousAllValues) => {
+		const { showNotification } = this.props;
+		
+		return value.split('').reduce((acc, it, index) => {
+			if(index < 2) return acc;
+			if(it === this.telephoneMask[index]) return acc+ this.telephoneMask[index];
+			else if(isNaN(+it)) {
+				showNotification(`В поле ТЕЛЕФОН допустимы только цифры`);
+				return (acc + this.telephoneMask[index]).slice(0,17);
+			} else {
+				acc = (acc + this.telephoneMask[index]).slice(0, 17);
+				console.log('acc', acc);
+				return acc.replace('_', it);
+			}
+
+		}, '+7');
 	};
 	
 	render(){
@@ -43,23 +61,23 @@ export class IndivideForm extends Component {
 			<Form>
 				<Label>
 					<Span>Имя<Sup>*</Sup></Span>
-					<StyledField size="10" name="firstName" component="input" type="text"
+					<StyledField size="14" name="firstName" component="input" type="text"
 					       normalize={normalizeFirstName} />
 				</Label>
 				<Label>
 					<Span>Фамилия<Sup>*</Sup></Span>
-					<StyledField size="10" name="lastName" component="input" type="text"
+					<StyledField size="14" name="lastName" component="input" type="text"
 					       normalize={normalizeLastName} disabled={lastNameActive}/>
 				</Label>
 				<Label>
 					<Span>Отчество</Span>
-					<StyledField size="10" name="SurName" component="input" type="text"
+					<StyledField size="14" name="SurName" component="input" type="text"
 					       normalize={normalizeSurName} disabled={afterLastNameActive}/>
 				</Label>
 				<Label>
 					<Span>Телефон<Sup>*</Sup></Span>
-					<StyledField size="10" name="telephone" component="input" type="text"
-					        normalize={this.normalizeTelephone} disabled={afterLastNameActive}/>
+					<StyledField size="14" name="telephone" component="input" type="text"
+					        normalize={this.normalizeTelephone} disabled={false && afterLastNameActive}/>
 				</Label>
 			</Form>
 		)

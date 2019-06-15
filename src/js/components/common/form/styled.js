@@ -6,12 +6,13 @@ import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto } from '../../styles';
 export const StyledField = styled(Field)`
   border: 1px solid ${MAIN_COLOR_DGRAY};
   border-radius: 3px;
+  padding: 0 5px;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
 `;
 
 export const Sup = styled.sup`
