@@ -4,7 +4,7 @@ import { EntityForm, IndivideForm1 } from '../form';
 
 export default {
   bid_form_f: {
-    component: <IndivideForm1 />,
+    component: <IndivideForm1 mask="+X(XXX)-XXX-XX-XX" />,
     title: 'Форма для подачи заявки физического лица и ИП'
   },
   bid_form_u: {
