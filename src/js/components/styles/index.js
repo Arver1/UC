@@ -6,6 +6,7 @@ export const MAIN_WARNING_COLOR = '#FFC107';
 export const HEADER_TABLET_TOP_PADDING = '36px';
 export const HEADER_MOBIL_TOP_PADDING = '26px';
 export const Roboto = '\'Roboto\', sans-serif';
+export const MIN_WIDTH = '270px';
 export const TABLET_WIDTH = '~\'(min-width: 768px)\'';
 export const DESKTOP_WIDTH = '~\'(min-width: 1150px)\'';
 

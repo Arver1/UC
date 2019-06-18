@@ -1,45 +1,16 @@
 
 
 const gulp = require('gulp');
-const sass = require('gulp-sass');
 const browserSync = require('browser-sync').create();
-const sourcemaps = require('gulp-sourcemaps');
-const debug = require('gulp-debug');
-const gulpIf = require('gulp-if');
 const del = require('del');
 const gulpNewer = require('gulp-newer');
-const autoprefixer = require('gulp-autoprefixer');
-const notify = require('gulp-notify');
-const plumber = require('gulp-plumber');
 const cssnano = require('gulp-cssnano');
-const rename = require('gulp-rename');
 const htmlmin = require('gulp-htmlmin');
 const imagemin = require('gulp-imagemin');
-
-const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV.trim() === 'development';
 const webpack = require('webpack-stream');
 const cleanCSS = require('gulp-clean-css');
 const historyApiFallback = require('connect-history-api-fallback');
 const webpackConfig = require('./webpack.config.js');
-
-gulp.task('sass', () => gulp.src('src/scss/style.scss')
-  .pipe(debug({ title: 'src' }))
-  .pipe(plumber({
-    errorHandler: notify.onError(),
-  }))
-  .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-  .pipe(sass())
-  .pipe(debug({ title: 'scss' }))
-  .pipe(autoprefixer({
-    browsers: ['last 2 versions'],
-  }))
-  .pipe(debug({ title: 'autoprefixer' }))
-  .pipe(cleanCSS())
-  .pipe(gulpIf(isDevelopment, sourcemaps.write()))
-  .pipe(rename({
-    basename: 'style',
-  }))
-  .pipe(gulp.dest('src/css')));
 
 gulp.task('serv', () => {
   browserSync.init({
@@ -50,15 +21,11 @@ gulp.task('serv', () => {
       hotOnly: true,
     },
   });
-  browserSync.watch('src/css/*.css').on('change', browserSync.reload);
   browserSync.watch('*.html').on('change', browserSync.reload);
   browserSync.watch('src/img/*.*').on('all', browserSync.reload);
   browserSync.watch('src/js/**/**/*.js').on('change', gulp.series('webpack', 'reload'));
 });
 
-gulp.task('watch', () => {
-  gulp.watch('src/scss/**/*.scss', gulp.series('sass'));
-});
 
 gulp.task('reload', () => {
   browserSync.reload();
@@ -86,15 +53,6 @@ gulp.task('html', () => gulp.src('*.html', { since: gulp.lastRun('html') })
   .pipe(htmlmin({ collapseWhitespace: true }))
   .pipe(gulp.dest('build')));
 
-gulp.task('css', () => gulp.src('build/css/*.css', { since: gulp.lastRun('css') })
-  .pipe(gulpNewer('build/css'))
-  .pipe(gulp.dest('build/css')));
-
-gulp.task('mincss', () => gulp.src('src/css/style.css', { since: gulp.lastRun('css') })
-  .pipe(cssnano())
-// .pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest('build/src/css')));
-
 gulp.task('webpack', () => gulp.src('./src/js/index.js')
   .pipe(webpack(webpackConfig))
   .pipe(gulp.dest('./src/js')));
@@ -106,5 +64,5 @@ gulp.task('js', () => gulp.src('src/js/main.js', { since: gulp.lastRun('js') })
   .pipe(gulpNewer('build/src/js'))
   .pipe(gulp.dest('build/src/js')));
 
-gulp.task('build', gulp.series('clean', gulp.parallel('img', 'html'), 'sass', 'mincss', 'css', 'fonts', 'webpack', 'js'));
-gulp.task('dev', gulp.series('sass', 'webpack', gulp.parallel('serv', 'watch')));
+gulp.task('build', gulp.series('clean', gulp.parallel('img', 'html'), 'fonts', 'webpack', 'js'));
+gulp.task('dev', gulp.series('webpack', 'serv'));

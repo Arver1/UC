@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-import {Roboto, MAIN_COLOR_RED, MAIN_COLOR_DGRAY} from "../../styles";
+import { Link } from 'react-router-dom';
+import { Roboto, MAIN_COLOR_RED, MAIN_COLOR_DGRAY } from '../../styles';
 
 
 export const Section = styled.section`
   width: 300px;
   padding: 10px 0 0;
-  margin: 0 auto;
+  margin: 0 auto 20px;
 `;
 
 

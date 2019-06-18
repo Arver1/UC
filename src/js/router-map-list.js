@@ -1,11 +1,12 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { defaultMenuItems } from './constants/menu-items';
-import { Main } from './components/main';
-import { Header } from './components/header';
-import { Modal, Notification } from './components/common';
+import { Main, Header, Footer, Modal, Notification } from './components';
+import { NotFound } from './components/pages/404';
+
 
 const getPages = menuItems => menuItems.map(it => <Route path={it.url} component={it.component} />);
+
 
 
 export default () => (
@@ -13,8 +14,13 @@ export default () => (
     <Route path="/" component={Header} />
     <Route path="/" component={Modal} />
     <Route path="/" component={Notification} />
-    <Route exact path="/" component={Main} />
-    {getPages(defaultMenuItems)}
-    <Route path="/news" component={()=><div>Все новости</div>}/>
+    <Switch>
+      <Route exact path="/" component={Main}/>
+      <Route path="/news" component={() => <div>Все новости</div>}/>
+      <Route path="/news" component={() => <div>Все новости</div>}/>
+      {getPages(defaultMenuItems)}
+      <Route component={NotFound}/>
+    </Switch>
+    <Route path="/" component={Footer}/>
   </>
 );

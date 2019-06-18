@@ -1,7 +1,7 @@
 import { handleActions, combineActions } from 'redux-actions';
 import { closeModal, showModal } from './action';
 
-const defaultState = { modalName: 'cert' };
+const defaultState = { modalName: '' };
 
 export const showModalReducer = handleActions(
   {

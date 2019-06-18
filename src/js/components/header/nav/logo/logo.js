@@ -11,10 +11,10 @@ const IMGStyled = styled.img`
   }
 `;
 
-export const Logo = () => {
+export const Logo = ({width = 30, height = 30}) => {
   return (
     <Link to="/">
-      <IMGStyled src="src/img/logo.svg" width="30" height="30"/>
+      <IMGStyled src="src/img/logo.svg" width={width} height={height}/>
     </Link>
   )
 };

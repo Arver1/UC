@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {MAIN_COLOR_DGRAY, Roboto} from "../../styles";
+import {MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto} from '../../styles';
 
 export const List = styled.ul`
   padding: 0 15px;
@@ -56,4 +56,18 @@ export const Wrapper = styled.div`
     bottom: -2px;
     border-bottom: 1px dashed ${MAIN_COLOR_DGRAY};
   }
+`;
+
+export const StyledLink = styled.a`
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  color: #fff;
+  font-family: ${Roboto};
+  background-color: ${MAIN_COLOR_RED};
+  text-align: center;
+  vertical-align: center;
+  padding: 5px;
+  text-transform: uppercase;
+  border-radius: 5px;
 `;

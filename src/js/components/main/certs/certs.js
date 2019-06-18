@@ -16,7 +16,6 @@ export class Certs extends Component {
   render(){
     const handleClickFront = this.handleClick('cert_front');
     const handleClickBck = this.handleClick('cert_back');
-    
     return (
       <Section>
         <Title>Образец выдаваемого сертификата</Title>
