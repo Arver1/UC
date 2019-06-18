@@ -35,6 +35,7 @@ export const Section = styled.section`
   justify-content: flex-start;
   flex-direction: column;
   position: absolute;
+  z-index: 1000;
   top: 84px;
   height: calc(100vh - 84px);
   background: #E0E0E0;

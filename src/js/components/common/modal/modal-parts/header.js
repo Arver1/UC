@@ -2,38 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Wrapper, H2, Button } from './styled';
 import {closeModal} from "../action";
+import Spinner from "../../../spinner";
 
 
 @connect(null, {closeModal})
 export class Header extends Component {
 	
 	state = {
-		hidden: true
+		loading: true
 	};
 	
 	componentDidMount(){
 		const {wait = 500} = this.props;
 		this.timerId = setTimeout(() => {
 			this.setState({
-				hidden: false
+				loading: false
 			})
 		}, wait)
 	}
 	
 	
 	render(){
-		const { hidden } = this.state;
+		const { loading } = this.state;
 		const { title = 'Форма для подачи заявки физического лица и ИП', closeModal } = this.props;
 		
-		return hidden ? null :
-			<Wrapper>
-				<H2>
-					{title}
-				</H2>
-				<Button onClick={() => {
-					closeModal();
-					// this.props.onClick();
-				}} />
-			</Wrapper>
+		return (
+      <Wrapper>
+				{loading ? (<div style={{margin: "0 auto"}}><Spinner /></div>): (
+					<>
+            <H2>
+              {title}
+            </H2>
+            <Button onClick={() => {
+              closeModal();
+              // this.props.onClick();
+            }}/>
+					</>
+				)}
+      </Wrapper>
+		)
 	}
 }

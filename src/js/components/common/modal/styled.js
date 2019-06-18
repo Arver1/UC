@@ -39,7 +39,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
 `;
 
 export const NotificationPlace = styled.section`

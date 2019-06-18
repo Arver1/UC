@@ -15,5 +15,6 @@ export default () => (
     <Route path="/" component={Notification} />
     <Route exact path="/" component={Main} />
     {getPages(defaultMenuItems)}
+    <Route path="/news" component={()=><div>Все новости</div>}/>
   </>
 );

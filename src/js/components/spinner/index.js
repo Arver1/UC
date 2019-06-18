@@ -10,13 +10,13 @@ const Container = styled.div`
 
 const cssloadSpin = keyframes`
   100% {
-    transform: rotate(360deg); 
+    transform: rotate(360deg);
   }
 `;
 
 const Wheel = styled.div`
-  width: 37px;
-  height: 37px;
+  width: 30px;
+  height: 30px;
   margin: 0 auto;
   border: 2px solid ${MAIN_COLOR_RED};
   border-radius: 50%;
@@ -28,7 +28,6 @@ const Wheel = styled.div`
 function Spinner(){
   return (
     <>
-      <Container />
       <Wheel />
     </>
   )

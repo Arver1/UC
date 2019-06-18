@@ -16,6 +16,7 @@ export const Wrapper = styled.header`
 
 export const H2 = styled.h2`
   order: -2;
+  flex-grow: 1;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -23,8 +24,8 @@ export const H2 = styled.h2`
   color: ${MAIN_COLOR_DGRAY};
   font-family: ${Roboto};
   text-transform: uppercase;
-  width: 270px;
   box-sizing: border-box;
+  margin: 0 10px;
 `;
 
 export const Button = styled.button`

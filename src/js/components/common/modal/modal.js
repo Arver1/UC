@@ -3,12 +3,12 @@ import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import routeMap from './route-map';
 import { Section, Wrapper, NotificationPlace } from './styled';
-import { closeModal } from "./action";
-import {Header} from "./modal-parts";
+import { closeModal } from './action';
+import { Header } from './modal-parts';
+import { limitApp } from '../../../AC/actions';
+import {FULL_LIMIT} from '../../../constants';
 
-
-const EntryPointBlock = document.getElementById('app');
-@connect(({modal = {}}) => ({component: modal.modalName}), {closeModal})
+@connect(({modal = {}}) => ({component: modal.modalName}), {limitApp, closeModal})
 export class Modal extends Component {
 	
 	state = {
@@ -16,10 +16,11 @@ export class Modal extends Component {
 	};
 	
 	componentDidUpdate() {
-		if (this.props.component) {
-			EntryPointBlock.className = 'limit';
+		const { component, limitApp} = this.props;
+		if (component) {
+      limitApp(FULL_LIMIT)
 		} else {
-			EntryPointBlock.className = '';
+      limitApp(0)
 		}
 	}
 	
@@ -35,7 +36,9 @@ export class Modal extends Component {
 	  	<Section reverse={this.state.reverse} className="modal">
 			  <Wrapper>
 			  <Header wait={500} onClick={this.handleClick} title={form.title}/>
-				  <NotificationPlace className="notification"/>
+				  <NotificationPlace className="notification">
+						{form.notification}
+					</NotificationPlace>
 				  {form.component}
 			  </Wrapper>
 		  </Section>), document.body)

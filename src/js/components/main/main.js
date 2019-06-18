@@ -3,6 +3,7 @@ import { RouteList } from './route-list';
 import { BidList } from './bid-list';
 import { Certs } from './certs';
 import { StyledMain, Wrapper, Title } from './styled';
+import {News} from "../common/news";
 
 
 const dataRoute = [
@@ -27,6 +28,7 @@ export const Main = () => (
       <RouteList data={dataRoute} />
       <BidList />
       <Certs />
+      <News />
     </Wrapper>
   </StyledMain>
 );
