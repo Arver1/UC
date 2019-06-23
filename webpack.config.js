@@ -14,11 +14,11 @@ module.exports = {
   entry: {
     index: './index.js',
   },
-
+  
   output: {
     filename: 'main.js',
   },
-
+  
   plugins: [
     new CaseSensitivePathsPlugin(),
   ],
@@ -32,3 +32,40 @@ module.exports = {
     ],
   },
 };
+// const PATH = require('path');
+// const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+//
+// const PATHS = {
+//   source: PATH.join(__dirname, 'src/js'),
+//   build: PATH.join(__dirname, 'build'),
+// };
+//
+// module.exports = {
+//   // devtool: isDevelopment ? 'eval' : 'source-map',
+//   context: PATHS.source,
+//   entry: {
+//     index: './index.js',
+//   },
+//
+//   output: {
+//     filename: 'main.js',
+//     path: PATHS.build,
+//     publicPath: '/build/',
+//   },
+//
+//   plugins: [
+//     new CaseSensitivePathsPlugin(),
+//   ],
+//   module: {
+//     rules: [
+//       {
+//         test: /\.js$/,
+//         exclude: /node_modules/,
+//         use: 'babel-loader',
+//       },
+//     ],
+//   },
+//   devServer: {
+//     contentBase: PATHS.build,
+//   },
+// };

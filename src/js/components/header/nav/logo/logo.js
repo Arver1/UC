@@ -14,7 +14,7 @@ const IMGStyled = styled.img`
 export const Logo = ({width = 30, height = 30}) => {
   return (
     <Link to="/">
-      <IMGStyled src="src/img/logo.svg" width={width} height={height}/>
+      <IMGStyled src="src/img/logo.svg" width={width} height={height} alt="Логотип" title="Логотип" />
     </Link>
   )
 };
