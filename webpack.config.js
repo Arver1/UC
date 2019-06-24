@@ -14,18 +14,18 @@ module.exports = {
   entry: {
     index: './index.js',
   },
-  
+
   output: {
     filename: 'main.js',
   },
-  
+
   plugins: [
     new CaseSensitivePathsPlugin(),
   ],
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },

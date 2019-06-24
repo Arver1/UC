@@ -7,31 +7,14 @@ import { Contacts } from './contacts';
 import { NUMBER, WORK_TIME, ADDRESS } from '../../constants/common';
 
 
-
 export class PageHeader extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: true,
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false,
-      });
-    }, 500);
-  }
-
+  state = {
+    isLoading: false,
+  };
+  
   render() {
     const { isLoading } = this.state;
-
-    if (isLoading) {
-      return <Spinner />;
-    }
-
-    return (
+    return isLoading ? <Spinner /> : (
       <Header>
         <Wrapper>
           <Title />

@@ -1,1 +1,1 @@
-export {PageHeader as Header} from './header';
+export { PageHeader as Header } from './header';
