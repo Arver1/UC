@@ -15,6 +15,10 @@ module.exports = {
     index: './index.js',
   },
 
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
+
   output: {
     filename: 'main.js',
   },
