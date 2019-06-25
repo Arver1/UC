@@ -8,7 +8,7 @@ export const HEADER_MOBIL_TOP_PADDING = '26px';
 export const Roboto = '\'Roboto\', sans-serif';
 
 export const MIN_WIDTH = '270px';
-export const HEADER_TABLET_WIDTH = '591px';
+export const HEADER_TABLET_WIDTH = '600px';
 export const DESKTOP_WIDTH = '~\'(min-width: 1150px)\'';
 export const MEDIA_DELAY = '2000ms';
 

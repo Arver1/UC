@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createPortal } from 'react-dom';
 import {
-  delay, Li, StyledLink, Section, UL, StyledUl
+  delay, Li, StyledLink, Section, UL, StyledUl, SocialWrapper
 } from './styled';
 import { defaultMenuItems } from '../../../../constants/menu-items';
 import {Social} from "../../../common/social";
@@ -53,9 +53,9 @@ export class Menu extends Component {
     }, delay);
   };
 
-  createMenu = (items = [], resetFlag = false, count = items.length) => (
+  createMenu = (items = [], resetFlag = false, handleClick ,count = items.length) => (
     <>
-      {Array.isArray(items) && items.map((it, index) => <Li key={index} resetFlag={resetFlag}><StyledLink resetFlag={resetFlag} to={it.url} onClick={this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>).slice(0, count)}
+      {Array.isArray(items) && items.map((it, index) => <Li key={index} resetFlag={resetFlag}><StyledLink resetFlag={resetFlag} to={it.url} onClick={handleClick || this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>).slice(0, count)}
     </>
   );
   
@@ -83,7 +83,8 @@ export class Menu extends Component {
         <input type="checkbox" id="burger_menu" checked={checked} readOnly />
         <label htmlFor="burger_menu" onClick={this.handleClick}>Открыть меню</label>
         {createPortal(menu, EntryPointBlock)}
-        <StyledUl>{this.createMenu(items, true)}</StyledUl>
+        <StyledUl>{this.createMenu(items, true, noop)}</StyledUl>
+        <SocialWrapper><Social size={20} resetPadding/></SocialWrapper>
       </>
     );
   }

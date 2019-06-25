@@ -1,15 +1,15 @@
 import styled from 'styled-components';
+import { MIXINS } from '../../styles';
 
 
 export const Section = styled.section`
   display: flex;
   justify-content: flex-end;
-  padding: 0 50px;
+  padding: ${({ resetPadding }) => (resetPadding ? '0 10px' : '0 50px')};
 `;
 
 export const SocialItem = styled.a`
-  display: inline-block;
-  vertical-align: top;
+  ${MIXINS['inline-block']};
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -17,8 +17,8 @@ export const SocialItem = styled.a`
   & + & {
   margin-left: 10px;
   }
-	
-	&:hover {
-	  opacity: 0.5;
-	}
+  
+  &:hover {
+    opacity: 0.5;
+  }
 `;

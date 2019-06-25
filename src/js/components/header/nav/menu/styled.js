@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MAIN_COLOR_RED, MIXINS } from '../../../styles/index';
-import {HEADER_TABLET_WIDTH} from "../../../styles";
+import { MAIN_COLOR_RED, MIXINS, HEADER_TABLET_WIDTH } from '../../../styles';
 
 
 export const delay = 500;
@@ -118,5 +117,18 @@ export const StyledUl = styled.ul`
     margin-left: -15px;
     margin-top: 25px;
     overflow: hidden;
+  }
+`;
+
+export const SocialWrapper = styled.div`
+  display: none;
+  width: 120px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 15px;
+  @media (min-width: ${HEADER_TABLET_WIDTH}){
+    display: block;
   }
 `;
