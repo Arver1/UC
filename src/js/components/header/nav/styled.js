@@ -1,22 +1,19 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
-	MAIN_COLOR_RED, MEDIA_DELAY,
-	MEDIA_POINT_1,
-	MEDIA_POINT_2
-} from "../../styles";
+  HEADER_TABLET_WIDTH,
+  MAIN_COLOR_RED, MEDIA_POINT_1,
+  MIXINS, TABLET_WIDTH,
+} from '../../styles';
+
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  ${MIXINS.flex};
 `;
 
 export const MenuWrapper = styled.div`
-  display: flex;
+  ${MIXINS.flex};
   align-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
   flex-grow: 1;
   
   input {
@@ -87,19 +84,10 @@ export const MenuWrapper = styled.div`
     transform: rotate(45deg);
   }
   
-  transition: ${MEDIA_DELAY};
-  @media (min-width: ${MEDIA_POINT_2}) {
-  
-  	input {
-  		opacity: 0;
-  		display: none;
-  		transition: ${MEDIA_DELAY};
-  	}
-  	
-  	label {
-  		opacity: 0;
-  		display: none;
-  	}
+  @media (min-width: ${HEADER_TABLET_WIDTH}) {
+    label {
+      display: none;
+    }
   }
 `;
 
@@ -109,10 +97,4 @@ export const StyledNav = styled.nav`
   flex-grow: 1;
   padding: 10px 0 0;
   min-height: 37px;
-  transition: ${MEDIA_DELAY};
-  
-  @media (min-width: ${MEDIA_POINT_1}) {
-  	padding: 20px 0 0;
-  	transition: ${MEDIA_DELAY};
-  }
 `;

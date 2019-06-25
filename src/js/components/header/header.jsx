@@ -11,7 +11,7 @@ export class PageHeader extends Component {
   state = {
     isLoading: false,
   };
-  
+
   render() {
     const { isLoading } = this.state;
     return isLoading ? <Spinner /> : (
@@ -19,7 +19,7 @@ export class PageHeader extends Component {
         <Wrapper>
           <Title />
           <Nav />
-          <Contacts number={NUMBER} time={WORK_TIME} address={ADDRESS} />
+          <Contacts number={NUMBER} time={WORK_TIME} />
         </Wrapper>
       </Header>
     );

@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MAIN_COLOR_RED, Roboto } from '../../../styles/index';
+import { MAIN_COLOR_RED, MIXINS } from '../../../styles/index';
+import {HEADER_TABLET_WIDTH} from "../../../styles";
 
 
 export const delay = 500;
@@ -51,15 +52,12 @@ export const UL = styled.ul`
 `;
 
 export const StyledLink = styled(Link)`
-    display: inline-block;
-    vertical-align: top;
+    ${MIXINS['inline-block']};
     position: relative;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: normal;
-    color: #000;
-    font-family: ${Roboto};
+    width: ${({ resetFlag }) => (resetFlag ? 'auto' : '100%')};
+    ${MIXINS.font()};
+    font-size: ${({ resetFlag }) => (resetFlag ? '12px' : '16px')};
+    font-weight: ${({ resetFlag }) => (resetFlag ? 500 : 400)};
     cursor: pointer;
     box-sizing: border-box;
     animation: ${menuOpacity} 2s forwards;
@@ -77,7 +75,7 @@ export const StyledLink = styled(Link)`
     
     &::before {
         content: '';
-        display: block;
+        display: ${({ resetFlag }) => (resetFlag ? 'none' : 'block')};
         position: absolute;
         bottom: -5px;
         width: 100%;
@@ -89,25 +87,36 @@ export const StyledLink = styled(Link)`
         }
     
     &:active {
-    	color: ${MAIN_COLOR_RED};
+      color: ${MAIN_COLOR_RED};
     }
 `;
 
 export const Li = styled.li`
-  margin-top: 15px;
+  margin-top: ${({ resetFlag }) => (resetFlag ? '5px' : '15px')};
   position: relative;
-  padding: 0 50px;
-	
-	
-	&::before {
-		content: '';
-		display: block;
-		position: absolute;
-		left: 20px;
-		transform: rotate(45deg);
-		top: 30%;
-		background-color: ${MAIN_COLOR_RED};
-		width: 8px;
-		height: 8px;
-	}
+  padding: ${({ resetFlag }) => (resetFlag ? '0 5px' : '0 50px')};
+  
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: ${({ resetFlag }) => (resetFlag ? '-7px' : '20px')};
+    transform: rotate(45deg);
+    top: ${({ resetFlag }) => (resetFlag ? '4px' : '30%')};
+    background-color: ${MAIN_COLOR_RED};
+    width:  ${({ resetFlag }) => (resetFlag ? '5px' : '8px')};
+    height: ${({ resetFlag }) => (resetFlag ? '5px' : '8px')};
+  }
+`;
+
+export const StyledUl = styled.ul`
+  display: none;
+  @media (min-width: ${HEADER_TABLET_WIDTH}){
+    ${MIXINS.flex};
+    justify-content: space-around;
+    width: 100%;
+    margin-left: -15px;
+    margin-top: 25px;
+    overflow: hidden;
+  }
 `;

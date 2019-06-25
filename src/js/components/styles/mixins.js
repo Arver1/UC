@@ -31,9 +31,9 @@ const hidden = `
 
 const font = (size = '16px', weight = '500', color = '#000', height = 'normal', family = Roboto) => `
   font-size: ${size};
-  weight: ${weight};
+  font-weight: ${weight};
   color: ${color};
-  height: ${height};
+  line-height: ${height};
   font-family: ${family};
 `;
 
