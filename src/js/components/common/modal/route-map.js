@@ -2,11 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { EntityForm, IndivideForm1 } from '../form';
 import Record from './modal-parts/record-badge';
+import {HEADER_DESKTOP_WIDTH} from "../../styles";
 
 const IMG = styled.img`
   display: block;
   height: 60vh; // max 60vh, 55vh required for iphoneX
   margin: 0 auto;
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}) {
+    height: 78vh;
+  }
 `;
 
 

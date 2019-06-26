@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { MAIN_COLOR_RED, MIXINS, HEADER_TABLET_WIDTH } from '../../../styles';
+import {MAIN_COLOR_RED, MIXINS, HEADER_TABLET_WIDTH, HEADER_DESKTOP_WIDTH} from '../../../styles';
 
 
 export const delay = 500;
@@ -88,6 +88,10 @@ export const StyledLink = styled(NavLink)`
     &:active {
       color: ${MAIN_COLOR_RED};
     }
+    
+    @media (min-width: 750px) {
+      font-size: 15px;
+    }
 `;
 
 export const Li = styled.li`
@@ -106,6 +110,22 @@ export const Li = styled.li`
     width:  ${({ resetFlag }) => (resetFlag ? '5px' : '8px')};
     height: ${({ resetFlag }) => (resetFlag ? '5px' : '8px')};
   }
+  
+  @media (min-width: 750px) {
+    &::before {
+      top: 5px;
+      width:  6px;
+      height: 6px;
+    }
+  }
+  
+  @media (min-width: ${HEADER_DESKTOP_WIDTH}){
+    margin-right: 20px;
+    
+    &::before {
+      left: -10px;
+    }
+  }
 `;
 
 export const StyledUl = styled.ul`
@@ -115,8 +135,14 @@ export const StyledUl = styled.ul`
     justify-content: space-around;
     width: 100%;
     margin-left: -15px;
-    margin-top: 25px;
+    margin-top: 35px;
     overflow: hidden;
+  }
+  
+  @media (min-width: ${HEADER_DESKTOP_WIDTH}){
+    justify-content: flex-start;
+    margin-left: 5px;
+    overflow: visible;
   }
 `;
 
@@ -130,5 +156,10 @@ export const SocialWrapper = styled.div`
   top: 15px;
   @media (min-width: ${HEADER_TABLET_WIDTH}){
     display: block;
+  }
+  
+  @media (min-width: ${HEADER_DESKTOP_WIDTH}){
+    top: auto;
+    bottom: -3px;
   }
 `;

@@ -2,15 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { HEADER_DESKTOP_WIDTH } from '../../../styles';
 
 
 const IMGStyled = styled.img`
-  transition-duration: 2s;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  
+  @media (min-width: ${HEADER_DESKTOP_WIDTH}) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 export const Logo = ({ width, height }) => (
   <Link to="/" style={{ alignSelf: 'flex-start' }}>
-    <IMGStyled src="src/img/logo.svg" width={width} height={height} alt="Логотип" title="Логотип" />
+    <IMGStyled width={width} height={height} src="src/img/logo.svg" alt="Логотип" title="Логотип" />
   </Link>
 );
 

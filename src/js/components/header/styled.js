@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {
+  HEADER_DESKTOP_WIDTH,
   HEADER_MOBIL_TOP_PADDING, HEADER_TABLET_TOP_PADDING, HEADER_TABLET_WIDTH, MAIN_COLOR_RED, MEDIA_DELAY, MIN_WIDTH,
   MIXINS,
 } from '../styles';

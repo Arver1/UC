@@ -10,7 +10,7 @@ export const Section = styled.section`
   
   @media(min-width: ${HEADER_TABLET_WIDTH}) {
     width: auto;
-     padding: 10px 25px 0;
+    padding: 10px 25px 0;
   }
 `;
 
@@ -69,5 +69,6 @@ export const MoreLink = styled.a`
 export const UL = styled.ul`
   @media(min-width: ${HEADER_TABLET_WIDTH}) {
     ${MIXINS.flex};
+    justify-content: flex-start;
   }
 `;

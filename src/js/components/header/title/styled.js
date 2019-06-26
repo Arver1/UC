@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { MAIN_COLOR_GRAY, MAIN_COLOR_RED } from '../../styles/index';
 import MIXINS from '../../styles/mixins';
-import {HEADER_TABLET_WIDTH} from "../../styles";
+import { HEADER_DESKTOP_WIDTH, MAIN_COLOR_GRAY, MAIN_COLOR_RED  } from '../../styles';
 
 export const H1 = styled.h1`
   position: absolute;
@@ -13,5 +12,11 @@ export const H1 = styled.h1`
   & > mark {
     background: none;
     color: ${MAIN_COLOR_RED};
+  }
+  
+  @media (min-width: ${HEADER_DESKTOP_WIDTH}) {
+    top: 44px;
+    padding-left: 61px;
+    font-size: 11px;
   }
 `;

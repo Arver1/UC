@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MIXINS } from '../../styles';
+import {HEADER_DESKTOP_WIDTH, MIXINS} from '../../styles';
 
 
 export const Section = styled.section`
@@ -11,7 +11,6 @@ export const Section = styled.section`
 export const SocialItem = styled.a`
   ${MIXINS['inline-block']};
   width: 30px;
-  height: 30px;
   border-radius: 50%;
   
   & + & {

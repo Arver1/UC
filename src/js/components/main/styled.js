@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {
+  HEADER_DESKTOP_WIDTH,
   HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS, Roboto,
 } from '../styles';
 
@@ -11,6 +12,10 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
   padding: 20px 10px 0;
+  
+  @media(min-width: ${HEADER_TABLET_WIDTH}){
+    max-width: 880px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -26,18 +31,17 @@ export const Title = styled.h2`
     text-transform: uppercase;
     margin-bottom: 20px;
     max-width: 350px;
-    
-    @media(min-width: ${HEADER_TABLET_WIDTH}){
-      max-width: 100%;
-    }
   }
   
   & > strong {
     ${MIXINS['inline-block']};
     ${MIXINS.font('14px', 400, `${MAIN_COLOR_DGRAY}`)};;
     max-width: 350px;
-    
-    @media(min-width: ${HEADER_TABLET_WIDTH}){
+  }
+  
+  @media(min-width: ${HEADER_TABLET_WIDTH}){
+    & > span,
+    & > strong {
       max-width: 100%;
     }
   }
@@ -50,6 +54,7 @@ export const StyledDiv = styled.div`
 `;
 
 export const About = styled.blockquote`
+  display: none;
   width: 300px;
   box-sizing: border-box;
   overflow: hidden;
@@ -57,7 +62,6 @@ export const About = styled.blockquote`
   padding: 0 0 0 50px;
   position: relative;
   ${MIXINS.font('12px', 400)};
-  
   
   &::before {
     content: '';
@@ -69,4 +73,8 @@ export const About = styled.blockquote`
     top: 44px;
     left: 30px;
   }
+  
+   @media(min-width: 668px){
+     display: block;
+   }
 `;

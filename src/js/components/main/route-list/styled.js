@@ -27,4 +27,6 @@ export const ListItem = styled.li`
     left: 0;
     bottom: 2px;
   }
+  
+  
 `;

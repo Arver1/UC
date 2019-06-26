@@ -50,7 +50,7 @@ export class Main extends Component {
           <StyledDiv>
             <About>
               <AboutTitle style={{ paddingTop: '10px' }}>О нас</AboutTitle>
-              {AboutText.split('{newLine}').map(it => <p style={{ paddingBottom: '5px' }}>{it}</p>)}
+              {AboutText.split('{newLine}').map(it => <p style={{ padding: '0 0 5px', textAlign: 'justify' }}>{it}</p>)}
             </About>
             <Certs />
           </StyledDiv>
