@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import {HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS} from '../styles';
+import {
+  HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS, Roboto,
+} from '../styles';
 
 export const StyledMain = styled.main`
   border-bottom: 1px solid ${MAIN_COLOR_RED};
@@ -38,5 +40,33 @@ export const Title = styled.h2`
     @media(min-width: ${HEADER_TABLET_WIDTH}){
       max-width: 100%;
     }
+  }
+`;
+
+export const StyledDiv = styled.div`
+  ${MIXINS.flex};
+  margin-bottom: 20px;
+  padding: 0 10px;
+`;
+
+export const About = styled.blockquote`
+  width: 300px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 20px auto 0;
+  padding: 0 0 0 50px;
+  position: relative;
+  ${MIXINS.font('12px', 400)};
+  
+  
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 3px;
+    height: calc(100% - 34px);
+    background: #860809;
+    top: 44px;
+    left: 30px;
   }
 `;

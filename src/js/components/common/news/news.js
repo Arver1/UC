@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import {
   Section, H2, StyledLink, SVG, Description, Time,
-  Wrapper, MoreLink
+  Wrapper, MoreLink, UL,
 } from './styled';
 import listNews from '../../../constants/news';
 
@@ -12,18 +12,17 @@ const sortedListNews = listNews.map((it) => {
   return it;
 })
   .sort((a, b) => b.data - a.data);
-const lastNews = sortedListNews.slice(0,3);
-
+const lastNews = sortedListNews.slice(0, 3);
 
 
 export class News extends Component {
   getNews = (news = lastNews) => (
-    <ul>
+    <UL>
       {news.map((it, index) => (
         <li key={index}>
           <Wrapper>
             <picture>
-              <img src={it.imgSrc} width="50" alt="Новость" title="Новость"/>
+              <img src={it.imgSrc} width="50" alt="Новость" title="Новость" />
             </picture>
             <Time dateTime="ДД.ММ.ГГ">{it.data.format('DD.MM.YY')}</Time>
           </Wrapper>
@@ -31,10 +30,10 @@ export class News extends Component {
           <MoreLink href="/news" title="Посмотреть подробнее">Подробнее</MoreLink>
         </li>
       ))}
-    </ul>
+    </UL>
   );
 
-  
+
   render() {
     return (
       <Section>

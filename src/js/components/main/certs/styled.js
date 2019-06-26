@@ -1,22 +1,18 @@
 import styled from 'styled-components';
-import { MAIN_COLOR_DGRAY, Roboto } from '../../styles';
+import {HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MIXINS} from '../../styles';
 
 export const Section = styled.section`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  ${MIXINS['flex-center']};
   margin: 0 auto 20px;
   max-width: 300px;
+  
+  @media(min-width: ${HEADER_TABLET_WIDTH}){
+    margin: 0 auto;
+  }
 `;
 
-export const Title = styled.h2`
-  font-size: 20px;
-  font-weight: 400;
-  line-height: normal;
-  color: ${MAIN_COLOR_DGRAY};
-  font-family: ${Roboto};
+export const Title = styled.h3`
+  ${MIXINS.font('20px', 400, `${MAIN_COLOR_DGRAY}`)};
   text-transform: uppercase;
   text-align: center;
   margin: 0 10px 20px;

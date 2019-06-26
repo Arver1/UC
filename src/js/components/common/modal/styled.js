@@ -35,11 +35,8 @@ export const Wrapper = styled.div`
   z-index: 2000;
   width: 100%;
   height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
   box-sizing: border-box;
 `;
 

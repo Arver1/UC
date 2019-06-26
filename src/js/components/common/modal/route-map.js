@@ -4,8 +4,8 @@ import { EntityForm, IndivideForm1 } from '../form';
 import Record from './modal-parts/record-badge';
 
 const IMG = styled.img`
-  display: flex;
-  height: 55vh; // max 60vh, 55vh required for iphoneX
+  display: block;
+  height: 60vh; // max 60vh, 55vh required for iphoneX
   margin: 0 auto;
 `;
 

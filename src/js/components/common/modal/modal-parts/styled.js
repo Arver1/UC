@@ -4,6 +4,7 @@ import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto } from '../../../styles';
 
 export const Wrapper = styled.header`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-content: center;
   align-items: center;
