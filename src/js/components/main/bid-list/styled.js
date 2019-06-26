@@ -1,22 +1,29 @@
 import styled from 'styled-components';
-import {MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto} from '../../styles';
+import {HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS} from '../../styles';
 
 export const List = styled.ul`
   padding: 0 15px;
   margin-bottom: 20px;
+  
+  @media(min-width: ${HEADER_TABLET_WIDTH}) {
+    ${MIXINS['flex-center']};
+    justify-content: space-between;
+  }
 `;
 
 export const ListItem = styled.li`
   background: linear-gradient(160deg, #ffffff 45%, #C8C6C7 100%);
   border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  ${MIXINS.flex};
   max-width: 300px;
   margin: auto;
   
   & + & {
     margin-top: 20px;
+    
+     @media(min-width: ${HEADER_TABLET_WIDTH}) {
+       margin-top: 0;
+     }
   }
   
   & > img {
@@ -26,21 +33,13 @@ export const ListItem = styled.li`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  ${MIXINS['flex-center']};
   flex-direction: column;
   width: 160px;
   text-overflow: ellipsis;
   
   & > h3 {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
-    color: ${MAIN_COLOR_DGRAY};
-    font-family: ${Roboto};
+    ${MIXINS.font('14px', 400, `${MAIN_COLOR_DGRAY}`)};
     align-self: center;
     margin-bottom: 16px;
     position: relative;
@@ -59,11 +58,7 @@ export const Wrapper = styled.div`
 `;
 
 export const StyledLink = styled.a`
-  font-size: 12px;
-  font-weight: 500;
-  line-height: normal;
-  color: #fff;
-  font-family: ${Roboto};
+  ${MIXINS.font('12px', 500, '#fff')};
   background-color: ${MAIN_COLOR_RED};
   text-align: center;
   vertical-align: center;

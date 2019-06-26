@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto } from '../styles';
+import {HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS} from '../styles';
 
 export const StyledMain = styled.main`
   border-bottom: 1px solid ${MAIN_COLOR_RED};
@@ -12,34 +12,31 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
+  ${MIXINS['flex-center']};
   flex-wrap: wrap;
   text-align: center;
   flex-direction: column;
   margin-bottom: 30px;
   
   & > span {
-    font-size: 26px;
-    font-weight: 400;
-    line-height: normal;
-    color: ${MAIN_COLOR_DGRAY};
-    font-family: ${Roboto};
+    ${MIXINS.font('26px', 400, `${MAIN_COLOR_DGRAY}`)};
+    ${MIXINS['inline-block']};
     text-transform: uppercase;
     margin-bottom: 20px;
-    display: inline-block;
     max-width: 350px;
+    
+    @media(min-width: ${HEADER_TABLET_WIDTH}){
+      max-width: 100%;
+    }
   }
   
   & > strong {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
-    color: ${MAIN_COLOR_DGRAY};
-    font-family: ${Roboto};
-    display: inline-block;
+    ${MIXINS['inline-block']};
+    ${MIXINS.font('14px', 400, `${MAIN_COLOR_DGRAY}`)};;
     max-width: 350px;
+    
+    @media(min-width: ${HEADER_TABLET_WIDTH}){
+      max-width: 100%;
+    }
   }
 `;

@@ -9,6 +9,7 @@ import {Social} from "../../../common/social";
 import { FULL_LIMIT } from "../../../../constants/common";
 import { limitApp} from "../../../../AC/actions";
 import {noop} from "../../../../constants";
+import {MAIN_COLOR_RED} from "../../../styles";
 
 
 @connect(null, {limitApp})
@@ -55,7 +56,12 @@ export class Menu extends Component {
 
   createMenu = (items = [], resetFlag = false, handleClick ,count = items.length) => (
     <>
-      {Array.isArray(items) && items.map((it, index) => <Li key={index} resetFlag={resetFlag}><StyledLink resetFlag={resetFlag} to={it.url} onClick={handleClick || this.handleClick}>{it.name.toUpperCase()}</StyledLink></Li>).slice(0, count)}
+      {Array.isArray(items) && items.map((it, index) =>
+        <Li key={index} resetFlag={resetFlag}>
+          <StyledLink activeStyle={{color: `${MAIN_COLOR_RED}`}} resetFlag={resetFlag} to={it.url} onClick={handleClick || this.handleClick}>
+            {it.name.toUpperCase()}
+          </StyledLink>
+        </Li>).slice(0, count)}
     </>
   );
   

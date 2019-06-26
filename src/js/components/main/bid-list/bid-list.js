@@ -6,43 +6,43 @@ import {noop} from "../../../constants";
 
 @connect(null, {showModal})
 export class BidList extends Component {
-	
-	handleClickU = (e) => {
-		e.preventDefault();
-		const {showModal = noop} = this.props;
-		
-		showModal('bid_form_u');
-	};
-	
-	handleClickF = (e) => {
-		e.preventDefault();
-		const {showModal = noop} = this.props;
-		
-		showModal('bid_form_f');
-	};
-	
+  
+  handleClickU = (e) => {
+    e.preventDefault();
+    const {showModal = noop} = this.props;
+    
+    showModal('bid_form_u');
+  };
+  
+  handleClickF = (e) => {
+    e.preventDefault();
+    const {showModal = noop} = this.props;
+    
+    showModal('bid_form_f');
+  };
+  
   render(){
-		
+    
     return (
-	    <List>
-		    <ListItem>
-			    <Wrapper>
-				    <h3>Физические лица и ИП</h3>
-				    <StyledLink href="#req_indiv" title="Подать заявку как физическое лицо и ИП" onClick={this.handleClickF}>Подать заявку</StyledLink>
-			    </Wrapper>
-			    <img src="/src/img/worker@1x.png" srcSet="/src/img/worker@2x.png 2x" width="103" height="120"
-			         alt="Изображение сотрудника" title="Изображение сотрудника"/>
-		    </ListItem>
-		    <ListItem>
-			    <Wrapper>
-				    <h3>Юридические лица</h3>
-				    <StyledLink href="#req_entity" title="Подать заявку как юридическое лицо" onClick={this.handleClickU}>Подать заявку</StyledLink>
-			    </Wrapper>
-			    <img src="/src/img/manager@1x.png" srcSet="/src/img/manager@2x.png 2x" width="83" height="120"
-			         alt="Изображение начальника"
-			         title="Изображение начальника"/>
-		    </ListItem>
-	    </List>
+      <List>
+        <ListItem>
+          <Wrapper>
+            <h3>Физические лица и ИП</h3>
+            <StyledLink href="#req_indiv" title="Подать заявку как физическое лицо и ИП" onClick={this.handleClickF}>Подать заявку</StyledLink>
+          </Wrapper>
+          <img src="/src/img/worker@1x.png" srcSet="/src/img/worker@2x.png 2x" width="103" height="120"
+               alt="Изображение сотрудника" title="Изображение сотрудника"/>
+        </ListItem>
+        <ListItem>
+          <Wrapper>
+            <h3>Юридические лица</h3>
+            <StyledLink href="#req_entity" title="Подать заявку как юридическое лицо" onClick={this.handleClickU}>Подать заявку</StyledLink>
+          </Wrapper>
+          <img src="/src/img/manager@1x.png" srcSet="/src/img/manager@2x.png 2x" width="83" height="120"
+               alt="Изображение начальника"
+               title="Изображение начальника"/>
+        </ListItem>
+      </List>
     )
   }
 };

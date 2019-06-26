@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MAIN_COLOR_RED, MIXINS, HEADER_TABLET_WIDTH } from '../../../styles';
 
 
@@ -50,7 +50,7 @@ export const UL = styled.ul`
   margin-bottom: 50px;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
     ${MIXINS['inline-block']};
     position: relative;
     width: ${({ resetFlag }) => (resetFlag ? 'auto' : '100%')};
