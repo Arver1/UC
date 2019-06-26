@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MAIN_COLOR_RED, MAIN_COLOR_DGRAY, MIXINS, HEADER_TABLET_WIDTH} from '../../styles';
+import {MAIN_COLOR_RED, MAIN_COLOR_DGRAY, MIXINS, HEADER_TABLET_WIDTH, HEADER_DESKTOP_WIDTH} from '../../styles';
 
 
 export const Section = styled.section`
@@ -39,6 +39,11 @@ export const Description = styled.p`
   width: 200px;
   padding-left: 64px;
   margin: 0 0 5px;
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+     font-size: 14px;
+     width: 300px;
+  }
 `;
 
 export const Time = styled.time`

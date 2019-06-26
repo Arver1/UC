@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MIXINS} from '../../styles';
+import {HEADER_DESKTOP_WIDTH, HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MIXINS} from '../../styles';
 
 export const Section = styled.section`
   ${MIXINS['flex-center']};
@@ -8,6 +8,10 @@ export const Section = styled.section`
   
   @media(min-width: ${HEADER_TABLET_WIDTH}){
     margin: 0 auto;
+  }
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+    margin: 0;
   }
 `;
 

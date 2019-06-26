@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {
   HEADER_DESKTOP_WIDTH,
-  HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS, Roboto,
+  HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS,
 } from '../styles';
 
 export const StyledMain = styled.main`
@@ -15,6 +15,10 @@ export const Wrapper = styled.div`
   
   @media(min-width: ${HEADER_TABLET_WIDTH}){
     max-width: 880px;
+  }
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+    max-width: none;
   }
 `;
 
@@ -44,6 +48,18 @@ export const Title = styled.h2`
     & > strong {
       max-width: 100%;
     }
+  }
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+    & > span {
+      margin-bottom: 5px;
+    }
+  }
+`;
+
+export const WrapperTitle = styled.div`
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+    ${MIXINS['flex-center']};
   }
 `;
 
@@ -76,5 +92,14 @@ export const About = styled.blockquote`
   
    @media(min-width: 668px){
      display: block;
+   }
+  
+   @media(min-width: ${HEADER_TABLET_WIDTH}){
+     width: calc(100% - 300px);
+   }
+  
+   @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+     flex-wrap: nowrap;
+     ${MIXINS.font('14px', 400)};
    }
 `;

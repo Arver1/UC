@@ -91,6 +91,7 @@ export const StyledLink = styled(NavLink)`
     
     @media (min-width: 750px) {
       font-size: 15px;
+      font-weight: 400;
     }
 `;
 

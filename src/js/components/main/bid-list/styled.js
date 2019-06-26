@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS} from '../../styles';
+import {HEADER_DESKTOP_WIDTH, HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS} from '../../styles';
 
 export const List = styled.ul`
   padding: 0 15px;
@@ -9,18 +9,22 @@ export const List = styled.ul`
     ${MIXINS['flex-center']};
     justify-content: space-between;
   }
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+    justify-content: center;
+  }
 `;
 
 export const ListItem = styled.li`
-  background: linear-gradient(160deg, #ffffff 45%, #C8C6C7 100%);
+  background: linear-gradient(150deg, #ffffff 55%, #C8C6C7 100%);
   border-radius: 10px;
   ${MIXINS.flex};
-  max-width: 300px;
+  max-width: 310px;
   margin: auto;
   
   & + & {
     margin-top: 20px;
-    
+    max-width: 300px;
      @media(min-width: ${HEADER_TABLET_WIDTH}) {
        margin-top: 0;
      }
@@ -29,6 +33,14 @@ export const ListItem = styled.li`
   & > img {
     order: -1;
     align-self: flex-start;
+  }
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}){
+    margin: 0 0 0 50px;
+    
+    & + & {
+      margin-left: 100px;
+    }
   }
 `;
 

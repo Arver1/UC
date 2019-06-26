@@ -1,10 +1,14 @@
 import styled from 'styled-components';
-import { MAIN_COLOR_DGRAY, MIXINS } from '../../styles';
+import {HEADER_DESKTOP_WIDTH, MAIN_COLOR_DGRAY, MIXINS} from '../../styles';
 
 
 export const List = styled.ul`
   width: 280px;
   margin: 0 auto 20px;
+  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}) {
+    margin: 0 0 20px 40px;
+  }
 `;
 
 export const ListItem = styled.li`
