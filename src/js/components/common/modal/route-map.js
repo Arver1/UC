@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { EntityForm, IndivideForm1 } from '../form';
 import Record from './modal-parts/record-badge';
-import {HEADER_DESKTOP_WIDTH} from "../../styles";
+import { HEADER_DESKTOP_WIDTH } from '../../styles';
 
 const IMG = styled.img`
   display: block;

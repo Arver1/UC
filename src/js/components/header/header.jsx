@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Header, Wrapper } from './styled';
-import Spinner from '../spinner';
+import { Spinner } from '../spinner';
 import { Title } from './title';
 import { Nav } from './nav';
 import { Contacts } from './contacts';
-import { NUMBER, WORK_TIME, ADDRESS } from '../../constants/common';
+import { NUMBER, WORK_TIME } from '../../constants/common';
 
 
 export class PageHeader extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Wrapper, H2, Button } from './styled';
-import {closeModal} from "../action";
-import Spinner from "../../../spinner";
+import {closeModal} from '../action';
+import {Spinner} from '../../../spinner';
 
 
 @connect(null, {closeModal})

@@ -1,16 +1,16 @@
 import React from 'react';
-import {titleMap} from "./styled";
+import { titleMap } from './styled';
 
 
 export const Title = (text = '', size = 2) => {
   const Caption = titleMap[size] || React.Fragment;
-  if(Caption) {
+  if (Caption) {
     return (
       <Caption>
-      <span>
-        {text}
-      </span>
+        <span>
+          {text}
+        </span>
       </Caption>
-    )
+    );
   }
 };

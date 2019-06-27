@@ -24,14 +24,14 @@ export class Qualifications extends PureComponent {
     const pathName = get(history, 'location.pathname', '');
 
     return (
-			<>
+      <>
   {Title('Квалификации')}
   <BreadCrumbs path={pathName} />
   {/* <Note> */}
   {/* {dataNote} */}
   {/* </Note> */}
   {getQualityList()}
-			</>
+      </>
     );
   }
 }
