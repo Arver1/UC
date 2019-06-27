@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {HEADER_DESKTOP_WIDTH, MAIN_COLOR_DGRAY, MIXINS} from '../../styles';
+import { HEADER_DESKTOP_WIDTH, MAIN_COLOR_DGRAY, MIXINS } from '../../styles';
 
 
 export const List = styled.ul`
@@ -32,5 +32,7 @@ export const ListItem = styled.li`
     bottom: 2px;
   }
   
-  
+  @media(min-width: ${HEADER_DESKTOP_WIDTH}) {
+    margin-top: 10px;
+  }
 `;

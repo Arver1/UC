@@ -52,7 +52,7 @@ module.exports = {
 //   },
 //
 //   output: {
-//     filename: 'main.js',
+//     filename: 'main.jsx',
 //     path: PATHS.build,
 //     publicPath: '/build/',
 //   },

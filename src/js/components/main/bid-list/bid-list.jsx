@@ -30,7 +30,7 @@ export class BidList extends Component {
             <h3>Физические лица и ИП</h3>
             <StyledLink href="#req_indiv" title="Подать заявку как физическое лицо и ИП" onClick={this.handleClickF}>Подать заявку</StyledLink>
           </Wrapper>
-          <img src="/src/img/worker@1x.png" srcSet="/src/img/worker@2x.png 2x" width="146" height="200"
+          <img src="/src/img/worker@1x.png" srcSet="/src/img/worker@2x.png 2x" width="139" height="200"
                alt="Изображение сотрудника" title="Изображение сотрудника"/>
         </ListItem>
         <ListItem>

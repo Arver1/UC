@@ -24,7 +24,6 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h2`
   ${MIXINS['flex-center']};
-  flex-wrap: wrap;
   text-align: center;
   flex-direction: column;
   margin-bottom: 30px;

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import {
-  HEADER_DESKTOP_WIDTH,
   HEADER_TABLET_WIDTH,
-  MAIN_COLOR_RED, MEDIA_POINT_1,
-  MIXINS, TABLET_WIDTH,
+  MAIN_COLOR_RED,
+  MIXINS,
 } from '../../styles';
 
 

@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { Roboto } from './variables';
 
 const flex = `

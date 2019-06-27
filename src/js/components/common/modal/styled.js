@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import {MAX_MODAL_WIDTH, MIN_WIDTH} from "../../styles";
 
 const showAnimate = keyframes`
   100% {
@@ -7,7 +8,7 @@ const showAnimate = keyframes`
     top: 0;
     left: 0;
     padding: 30px;
-    min-width: 270px;
+    min-width: ${MIN_WIDTH};
     transform: none;
   }
 `;
@@ -33,7 +34,8 @@ export const Section = styled.section`
 export const Wrapper = styled.div`
   background-color: #fff;
   z-index: 2000;
-  width: 100%;
+  max-width: ${MAX_MODAL_WIDTH};
+  margin: 0 auto;
   height: calc(100vh - 60px);
   position: relative;
   overflow-y: auto;

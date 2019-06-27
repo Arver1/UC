@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {HEADER_DESKTOP_WIDTH, HEADER_TABLET_WIDTH, MAIN_COLOR_DGRAY, MAIN_COLOR_RED, MIXINS} from '../../styles';
 
 export const List = styled.ul`
-  padding: 0 15px;
   margin-bottom: 20px;
   
   @media(min-width: ${HEADER_TABLET_WIDTH}) {

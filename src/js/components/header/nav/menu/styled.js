@@ -136,7 +136,7 @@ export const StyledUl = styled.ul`
     justify-content: space-around;
     width: 100%;
     margin-left: -15px;
-    margin-top: 35px;
+    margin-top: 32px;
     overflow: hidden;
   }
   
