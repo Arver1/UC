@@ -59,7 +59,7 @@ gulp.task('webpack', () => gulp.src('./src/js/index.js')
 gulp.task('fonts', () => gulp.src('src/fonts/**')
   .pipe(gulp.dest('build/src/fonts')));
 
-gulp.task('js', () => gulp.src('src/js/main.jsx', { since: gulp.lastRun('js') })
+gulp.task('js', () => gulp.src('src/js/main.js', { since: gulp.lastRun('js') })
   .pipe(gulpNewer('build/src/js'))
   .pipe(gulp.dest('build/src/js')));
 

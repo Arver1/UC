@@ -12,7 +12,7 @@ export class IndivideForm1 extends React.Component {
     value: telephoneMask.join(''),
   };
 
-  telephoneMask = telephoneMask;
+  telephoneMask = null;
 
   blocks = [];
 
@@ -26,19 +26,10 @@ export class IndivideForm1 extends React.Component {
     const { mask } = this.props;
 
     this.telephoneMask = mask || '+X(XXX)-XXX-XX-XX';
-    this.separates = this.telephoneMask.match(/[^X]/g);
-    let index = 0;
-    this.telephoneMask.split('').reduce((acc, it, i) => {
-      if (!~this.separates.indexOf(it)) {
-        index++;
-      } else if (index > 0) {
-        this.blocks.push(index);
-        index = 0;
-      }
-      if (i === this.telephoneMask.length - 1 && index > 0) {
-        this.blocks.push(index);
-      }
-    });
+    this.maskObj = this.telephoneMask.split('').reduce((acc, it, index) => {
+      acc[++index] = it === 'X' ? -2 : -1
+      return acc;
+    }, {});
 
     this.MIN_CURSOR_POS = this.telephoneMask.indexOf('X');
     this.MAX_CURSOR_POS = this.telephoneMask.lastIndexOf('X') + 1;
@@ -167,6 +158,8 @@ export class IndivideForm1 extends React.Component {
     const { value: stateVal } = this.state;
     const cursor = this.telephoneRef.current;
 
+    console.log('value', value);
+    console.log('stateVal', stateVal);
     if (!value) {
       return this.setState({
         value: this.telephoneMask.replace(/X/g, '_'),
@@ -209,6 +202,7 @@ export class IndivideForm1 extends React.Component {
     }
 
 
+    // определение направления
     for (let i = 0; i < len; i++) {
       const left = this.separates.indexOf(value[i]);
       const right = len - 1 - this.separates.lastIndexOf(value[len - 1 - i]);
@@ -219,7 +213,6 @@ export class IndivideForm1 extends React.Component {
         i = len;
       }
     }
-
 
     console.log('value', value);
     let index = 0;
@@ -265,12 +258,88 @@ export class IndivideForm1 extends React.Component {
           if (this.blocks[index] > 1) i -= this.blocks[index] - 1;
           index--;
         }
-        console.log(acc);
     }
+  };
+
+  updateMaskObj = (position, direction, arrDigit, diff) => {
+    let step = 0;
+    let index = 0;
+    switch (direction) {
+      case 'left':
+        for (let i = 1; i <= this.MAX_CURSOR_POS; i++) {
+          if(!~this.maskObj[i]) continue;
+          if(this.maskObj[i] !== -2 && i < position){
+            index++;
+            continue;
+          }
+          this.maskObj[i] = +arrDigit[index++];
+          step++;
+          if(step >= diff) i = this.MAX_CURSOR_POS;
+        }
+        break;
+      case 'right': {
+        index = arrDigit.length - 1;
+        for (let i = this.MAX_CURSOR_POS; i >= 1; i--) {
+          if (!~this.maskObj[i]) continue;
+          if (i > position) {
+            index--;
+            continue;
+          }
+          this.maskObj[i] = +arrDigit[index--];
+          step++;
+          if (step > diff) i = this.MAX_CURSOR_POS;
+        }
+      }
+    }
+  };
+
+  handleChange2 = (e) => {
+    const { value } = e.target;
+    const { value: stateVal } = this.state;
+    const cursor = this.telephoneRef.current;
+
+    const arrDigit = (value.match(/\d/g));
+    const prevArrDigit = (stateVal.match(/\d/g));
+    const arrLen = arrDigit && arrDigit.length || 0;
+    const prevLen = prevArrDigit && prevArrDigit.length || 0;
+    const maxLen = (this.telephoneMask.match(/X/g).length);
+    if(arrLen > maxLen) {
+      arrDigit.length = maxLen;
+    }
+    const direction = arrLen > prevLen ? 'left' : 'right';
+    const diff = Math.abs(prevLen - arrLen);
+    let currentPos = this.cursor || cursor.selectionStart;
+
+    currentPos = currentPos < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : currentPos;
+
+    this.updateMaskObj(currentPos, direction, arrDigit, diff);
+    
+    
+    console.log('arrDigit', arrDigit);
+    const total = Object.values(this.maskObj).reduce((acc, it, index) => {
+      if(!~it) return acc + this.telephoneMask[index];
+      if(it === -2) return acc + '_'
+      return acc + it;
+    }, '');
+  
+    this.cursor = 0;
+    return this.setState({
+      value: total,
+    }, () => {
+      if (direction === 'right') {
+        cursor.selectionStart = currentPos - diff < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos - diff;
+        cursor.selectionEnd = currentPos - diff < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos - diff;
+      } else {
+        const index = total.indexOf('_');
+        cursor.selectionStart = !~index > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : index;
+        cursor.selectionEnd = !~index > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : index;
+      }
+    });
   };
 
   render() {
     const { value } = this.state;
-    return <input size="20" value={value} ref={this.telephoneRef} onChange={this.handleChange1} />;
+    return <input size="20" value={value} ref={this.telephoneRef} onChange={this.handleChange2}
+                  onClick={(e) => this.cursor = e.target.selectionStart}/>;
   }
 }

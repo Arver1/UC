@@ -6,6 +6,10 @@ import {
 
 export const StyledMain = styled.main`
   border-bottom: 1px solid ${MAIN_COLOR_RED};
+  
+   @media(min-width: ${HEADER_TABLET_WIDTH}){
+     flex-grow: 1;
+  }
 `;
 
 export const Wrapper = styled.div`
