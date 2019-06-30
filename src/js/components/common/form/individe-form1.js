@@ -305,6 +305,7 @@ export class IndivideForm1 extends React.Component {
     const arrLen = arrDigit && arrDigit.length || 0;
     const prevLen = prevArrDigit && prevArrDigit.length || 0;
     const direction = arrLen > prevLen ? 'left' : 'right';
+    const maxLen = this.telephoneMask.match(/X/g).length;
     const diff = Math.abs(prevLen - arrLen);
     let currentPos = this.position;
     currentPos = currentPos < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : currentPos;
@@ -327,7 +328,9 @@ export class IndivideForm1 extends React.Component {
 
         let temp = 0;
         if (diff === 1) {
-          Object.keys(this.maskObj).some((it, index) => {
+          const arr = Object.keys(this.maskObj);
+          arr.push('-1');
+          arr.some((it, index) => {
             if (!~this.maskObj[index] || !index) return false;
             if (index <= currentPos) {
               temp++;
@@ -336,21 +339,24 @@ export class IndivideForm1 extends React.Component {
             this.maskObj[index] = +arrDigit[temp];
             return true;
           });
-          Object.keys(this.maskObj).some((it, index) => {
+          arr.some((it, index) => {
             
             if (!~this.maskObj[index] || !index) return false;
             if (temp >= 0) {
+              // требуется для перевода последнего символа
+              if(temp === 0) this.position = this.MAX_CURSOR_POS;
               temp--;
               return false;
             }
-            this.position = index - 1;
+            else this.position = index - 1;
             return true;
           });
         }
       case 'right':
     }
-  
-    console.log('this.maskObj', this.maskObj);
+    
+    const arr = Object.values(this.maskObj);
+    arr.push('-1');
     const total = Object.values(this.maskObj).reduce((acc, it, index) => {
       if (it === -1) return acc + this.telephoneMask[index];
       if (it === -2) return `${acc}_`;
