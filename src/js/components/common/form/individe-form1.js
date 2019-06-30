@@ -27,7 +27,7 @@ export class IndivideForm1 extends React.Component {
 
     this.telephoneMask = mask || '+X(XXX)-XXX-XX-XX';
     this.maskObj = this.telephoneMask.split('').reduce((acc, it, index) => {
-      acc[++index] = it === 'X' ? -2 : -1
+      acc[++index] = it === 'X' ? -2 : -1;
       return acc;
     }, {});
 
@@ -262,32 +262,34 @@ export class IndivideForm1 extends React.Component {
   };
 
   updateMaskObj = (position, direction, arrDigit, diff) => {
-    let step = 0;
+    console.log('position', position);
+    const step = 0;
     let index = 0;
     switch (direction) {
       case 'left':
         for (let i = 1; i <= this.MAX_CURSOR_POS; i++) {
-          if(!~this.maskObj[i]) continue;
-          if(this.maskObj[i] !== -2 && i < position){
+          if (!~this.maskObj[i]) continue;
+          if (this.maskObj[i] !== -2 && i < position) {
             index++;
             continue;
           }
           this.maskObj[i] = +arrDigit[index++];
-          step++;
-          if(step >= diff) i = this.MAX_CURSOR_POS;
+          if (index >= arrDigit.length) {
+            i = this.MAX_CURSOR_POS;
+          }
         }
         break;
       case 'right': {
-        index = arrDigit.length - 1;
         for (let i = this.MAX_CURSOR_POS; i >= 1; i--) {
           if (!~this.maskObj[i]) continue;
-          if (i > position) {
-            index--;
-            continue;
+          if (this.maskObj[i] === -2) continue;
+          if (i > position + 1) continue;
+          this.maskObj[i] = -2;
+          diff--;
+          if (!diff) {
+            this.help = i - 1;
+            break;
           }
-          this.maskObj[i] = +arrDigit[index--];
-          step++;
-          if (step > diff) i = this.MAX_CURSOR_POS;
         }
       }
     }
@@ -302,44 +304,82 @@ export class IndivideForm1 extends React.Component {
     const prevArrDigit = (stateVal.match(/\d/g));
     const arrLen = arrDigit && arrDigit.length || 0;
     const prevLen = prevArrDigit && prevArrDigit.length || 0;
-    const maxLen = (this.telephoneMask.match(/X/g).length);
-    if(arrLen > maxLen) {
-      arrDigit.length = maxLen;
-    }
     const direction = arrLen > prevLen ? 'left' : 'right';
     const diff = Math.abs(prevLen - arrLen);
-    let currentPos = this.cursor || cursor.selectionStart;
-
+    let currentPos = this.position;
     currentPos = currentPos < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : currentPos;
-
-    this.updateMaskObj(currentPos, direction, arrDigit, diff);
-    
-    
-    console.log('arrDigit', arrDigit);
-    const total = Object.values(this.maskObj).reduce((acc, it, index) => {
-      if(!~it) return acc + this.telephoneMask[index];
-      if(it === -2) return acc + '_'
-      return acc + it;
-    }, '');
   
-    this.cursor = 0;
-    return this.setState({
+    // if(this.maskObj[currentPos] === -1){
+    //   this.setState({
+    //     value: stateVal,
+    //   }, () => {
+    //     cursor.selectionStart = ++this.position;
+    //     cursor.selectionEnd = this.position;
+    //   });
+    // }
+    console.log('arrDigit', arrDigit);
+    console.log('currentPos', currentPos);
+    console.log('this.MIN_CURSOR_POS', this.MIN_CURSOR_POS);
+    console.log('this.MAX_CURSOR_POS', this.MAX_CURSOR_POS);
+
+    switch (direction) {
+      case 'left':
+
+        let temp = 0;
+        if (diff === 1) {
+          Object.keys(this.maskObj).some((it, index) => {
+            if (!~this.maskObj[index] || !index) return false;
+            if (index <= currentPos) {
+              temp++;
+              return false;
+            }
+            this.maskObj[index] = +arrDigit[temp];
+            return true;
+          });
+          Object.keys(this.maskObj).some((it, index) => {
+            
+            if (!~this.maskObj[index] || !index) return false;
+            if (temp >= 0) {
+              temp--;
+              return false;
+            }
+            this.position = index - 1;
+            return true;
+          });
+        }
+      case 'right':
+    }
+  
+    console.log('this.maskObj', this.maskObj);
+    const total = Object.values(this.maskObj).reduce((acc, it, index) => {
+      if (it === -1) return acc + this.telephoneMask[index];
+      if (it === -2) return `${acc}_`;
+      return acc + this.maskObj[index + 1];
+    }, '');
+
+    this.setState({
       value: total,
     }, () => {
-      if (direction === 'right') {
-        cursor.selectionStart = currentPos - diff < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos - diff;
-        cursor.selectionEnd = currentPos - diff < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos - diff;
-      } else {
-        const index = total.indexOf('_');
-        cursor.selectionStart = !~index > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : index;
-        cursor.selectionEnd = !~index > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : index;
-      }
+      cursor.selectionStart = this.position;
+      cursor.selectionEnd = this.position;
     });
   };
 
+  handleChange3 = () => {
+  }
+
   render() {
     const { value } = this.state;
-    return <input size="20" value={value} ref={this.telephoneRef} onChange={this.handleChange2}
-                  onClick={(e) => this.cursor = e.target.selectionStart}/>;
+    return (
+      <input
+        size="20"
+        value={value}
+        ref={this.telephoneRef}
+        onChange={this.handleChange2}
+        onClick={(e) => {
+          this.position = e.target.selectionStart;
+        }}
+      />
+    );
   }
 }
