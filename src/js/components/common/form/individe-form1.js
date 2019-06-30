@@ -309,43 +309,33 @@ export class IndivideForm1 extends React.Component {
     const diff = Math.abs(prevLen - arrLen);
     let currentPos = this.position;
     currentPos = currentPos < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : currentPos;
-  
-    // if(this.maskObj[currentPos] === -1){
-    //   this.setState({
-    //     value: stateVal,
-    //   }, () => {
-    //     cursor.selectionStart = ++this.position;
-    //     cursor.selectionEnd = this.position;
-    //   });
-    // }
-    console.log('arrDigit', arrDigit);
+    
     console.log('currentPos', currentPos);
+    console.log('this.maskObj', this.maskObj);
     console.log('this.MIN_CURSOR_POS', this.MIN_CURSOR_POS);
     console.log('this.MAX_CURSOR_POS', this.MAX_CURSOR_POS);
-
     switch (direction) {
       case 'left':
 
         let temp = 0;
         if (diff === 1) {
-          const arr = Object.keys(this.maskObj);
+          const arr = Object.values(this.maskObj);
           arr.push('-1');
           arr.some((it, index) => {
             if (!~this.maskObj[index] || !index) return false;
-            if (index <= currentPos) {
-              temp++;
+            if (index <= currentPos ) {
+              if(this.maskObj[index] !== -2) temp++;
               return false;
             }
             this.maskObj[index] = +arrDigit[temp];
             return true;
           });
           arr.some((it, index) => {
-            
             if (!~this.maskObj[index] || !index) return false;
             if (temp >= 0) {
               // требуется для перевода последнего символа
               if(temp === 0) this.position = this.MAX_CURSOR_POS;
-              temp--;
+              if(this.maskObj[index] !== -2) temp--;
               return false;
             }
             else this.position = index - 1;
