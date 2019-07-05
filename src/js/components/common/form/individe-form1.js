@@ -309,11 +309,11 @@ export class IndivideForm1 extends React.Component {
     const diff = Math.abs(prevLen - arrLen);
     let currentPos = this.position;
     currentPos = currentPos < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : currentPos > this.MAX_CURSOR_POS ? this.MAX_CURSOR_POS : currentPos;
-    
-    console.log('currentPos', currentPos);
-    console.log('this.maskObj', this.maskObj);
-    console.log('this.MIN_CURSOR_POS', this.MIN_CURSOR_POS);
-    console.log('this.MAX_CURSOR_POS', this.MAX_CURSOR_POS);
+
+    // console.log('currentPos', currentPos);
+    // console.log('this.maskObj', this.maskObj);
+    // console.log('this.MIN_CURSOR_POS', this.MIN_CURSOR_POS);
+    // console.log('this.MAX_CURSOR_POS', this.MAX_CURSOR_POS);
     switch (direction) {
       case 'left':
 
@@ -323,8 +323,8 @@ export class IndivideForm1 extends React.Component {
           arr.push('-1');
           arr.some((it, index) => {
             if (!~this.maskObj[index] || !index) return false;
-            if (index <= currentPos ) {
-              if(this.maskObj[index] !== -2) temp++;
+            if (index <= currentPos) {
+              if (this.maskObj[index] !== -2) temp++;
               return false;
             }
             this.maskObj[index] = +arrDigit[temp];
@@ -334,17 +334,47 @@ export class IndivideForm1 extends React.Component {
             if (!~this.maskObj[index] || !index) return false;
             if (temp >= 0) {
               // требуется для перевода последнего символа
-              if(temp === 0) this.position = this.MAX_CURSOR_POS;
-              if(this.maskObj[index] !== -2) temp--;
+              if (temp === 0) this.position = this.MAX_CURSOR_POS;
+              if (this.maskObj[index] !== -2) temp--;
               return false;
             }
-            else this.position = index - 1;
+            this.position = index - 1;
             return true;
           });
         }
+        break;
       case 'right':
+        if(diff === 0){
+          for (let i = this.position; i >= this.MIN_CURSOR_POS; i--) {
+            if (!~this.maskObj[i] || this.maskObj[i] === -2) {
+              continue;
+            }
+            console.log('i', i)
+            this.position = i;
+            break;
+          }
+        }
+        else if (diff === 1) {
+          for (let i = this.position; i >= this.MIN_CURSOR_POS; i--) {
+            if (!~this.maskObj[i]) {
+              continue;
+            }
+            this.maskObj[i] = -2;
+            console.log('this.maskObj', this.maskObj);
+            break;
+          }
+          this.position--;
+          while (!~this.maskObj[this.position] === -1) {
+            this.position--;
+            if (this.position < this.MIN_CURSOR_POS) {
+              this.position = this.MIN_CURSOR_POS;
+              break;
+            }
+          }
+        }
     }
-    
+
+    console.log('this.maskObj', this.maskObj);
     const arr = Object.values(this.maskObj);
     arr.push('-1');
     const total = Object.values(this.maskObj).reduce((acc, it, index) => {
