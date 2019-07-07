@@ -115,9 +115,11 @@ export class IndivideForm1 extends React.Component {
       const arr = Object.values(this.maskObj);
       let index = this.posStart < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : this.posStart;
       while(index <= this.posEnd + 1){
-        if(arr[index] !== 2 && arr[index] !== 1){
+        if(arr[index] !== -2 && arr[index] !== -1){
           this.position = index + 1;
+          console.log('arr[index]',arr[index])
           console.log('arver', this.position);
+          console.log('arr', arr)
           break;
         }
         index++;
