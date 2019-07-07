@@ -35,8 +35,9 @@ export class IndivideForm1 extends React.Component {
     this.MIN_CURSOR_POS = this.telephoneMask.indexOf('X');
     this.MAX_CURSOR_POS = this.telephoneMask.lastIndexOf('X') + 1;
 
+    this.defaultValue = this.telephoneMask.replace(/X/g, '_');
     this.setState({
-      value: this.telephoneMask.replace(/X/g, '_'),
+      value: this.defaultValue,
     });
   }
 
@@ -117,6 +118,17 @@ export class IndivideForm1 extends React.Component {
     });
   };
 
+  resetState = () => {
+    const cursor = this.telephoneRef.current;
+
+    this.setState({
+      value: this.defaultValue,
+    }, () => {
+      cursor.selectionStart = this.MIN_CURSOR_POS;
+      cursor.selectionEnd = this.MIN_CURSOR_POS;
+    });
+  };
+
   handleChange = (e) => {
     e.stopPropagation();
 
@@ -136,18 +148,6 @@ export class IndivideForm1 extends React.Component {
 
     const maskObjArr = Object.values(this.maskObj);
 
-
-    // correct a position if removed one symbol by multiple selection
-    if (this.posEnd - this.posStart > 1 && diff === 1 && this.posStart < this.posEnd && direction === 'right') {
-      let index = this.posStart;
-      while (index <= this.posEnd + 1) {
-        if (maskObjArr[index] !== -2 && maskObjArr[index] !== -1) {
-          this.position = index + 1;
-          break;
-        }
-        index += 1;
-      }
-    }
 
     if (diff > 1) {
       if (direction === 'left') {
@@ -196,14 +196,21 @@ export class IndivideForm1 extends React.Component {
           });
         }
       }
-    } else if (diff === 1 && diff === prevLen && direction === 'right') {
-      Object.values(this.maskObj).forEach((it, i) => {
-        i++;
-        if (!~it) return;
-        this.maskObj[i] = -2;
-      });
-      this.position = this.MIN_CURSOR_POS;
-    } else this.updateMaskObj(direction, diff, arrDigit);
+    } else if (diff === 1 && direction === 'right' && diff === prevLen) {
+      this.resetState();
+    } else if (diff === 1 && direction === 'right' && this.posEnd - this.posStart > 1 && this.posStart < this.posEnd) {
+      // correct a position if removed one symbol by multiple selection
+      let index = this.posStart;
+      while (index <= this.posEnd + 1) {
+        if (maskObjArr[index] !== -2 && maskObjArr[index] !== -1) {
+          this.position = index + 1;
+          break;
+        }
+        index += 1;
+      }
+    } else {
+      this.updateMaskObj(direction, diff, arrDigit);
+    }
 
     this.updateState();
   };
