@@ -40,8 +40,6 @@ export class IndivideForm1 extends React.Component {
     } else if (currentPos > this.MAX_CURSOR_POS) {
       currentPos = this.MAX_CURSOR_POS;
     }
-    console.log('currentPos', currentPos);
-    console.log('arrDigit', arrDigit);
     if (direction === 'left') {
       let temp = 0;
       if (diff === 1) {
@@ -98,6 +96,7 @@ export class IndivideForm1 extends React.Component {
   };
 
   handleChange = (e) => {
+    this.flag = false;
     const { value } = e.target;
     const { value: stateVal } = this.state;
     const cursor = this.telephoneRef.current;
@@ -107,37 +106,101 @@ export class IndivideForm1 extends React.Component {
     const arrLen = arrDigit && arrDigit.length || 0;
     const prevLen = prevArrDigit && prevArrDigit.length || 0;
     const maxLen = this.telephoneMask.match(/X/g).length;
+    arrDigit.length = maxLen;
     const direction = arrLen > prevLen ? 'left' : 'right';
     const diff = Math.abs(prevLen - arrLen);
+    console.log('this.position start', this.posStart);
+    console.log('this.position end', this.posEnd);
+    if(this.posEnd - this.posStart > 1 && diff === 1 && this.posStart < this.posEnd && direction === 'right'){
+      const arr = Object.values(this.maskObj);
+      let index = this.posStart < this.MIN_CURSOR_POS ? this.MIN_CURSOR_POS : this.posStart;
+      while(index <= this.posEnd + 1){
+        if(arr[index] !== 2 && arr[index] !== 1){
+          this.position = index + 1;
+          console.log('arver', this.position);
+          break;
+        }
+        index++;
+      }
+    }
     let currentPos = this.position;
     if (currentPos < this.MIN_CURSOR_POS) {
       currentPos = this.MIN_CURSOR_POS;
     } else if (currentPos > this.MAX_CURSOR_POS) {
       currentPos = this.MAX_CURSOR_POS;
     }
-
-    // console.log('diff', diff);
-    // console.log('currentPos', currentPos);
     if (diff > 1) {
       if (direction === 'left') {
         let index = 0;
-        // console.log('arrDigit',arrDigit);
-        // console.log('prevArrDigit',prevArrDigit);
         while (arrDigit[index] === prevArrDigit[index]) {
           index++;
           if (index > maxLen) break;
         }
         arrDigit.some((it, i) => {
-          if(i >= diff) return true;
+          if (i >= diff) return true;
           prevArrDigit[index + i] = arrDigit[index + i];
           this.updateMaskObj(direction, 1, prevArrDigit);
           return false;
         });
+      } else {
+        // случай неправильного выделения при удалении
+        if(diff > 1 && this.position === this.MAX_CURSOR_POS) {
+          this.position = this.MIN_CURSOR_POS;
+        }
+        // reset full
+        if (!arrLen) {
+          Object.values(this.maskObj).forEach((it, i) => {
+            i++;
+            if (!~it) return;
+            this.maskObj[i] = -2;
+          });
+          this.position = this.MIN_CURSOR_POS;
+        } else {
+          let temp = 0;
+          let arrCount = 0;
+          Object.values(this.maskObj).forEach((it, i) => {
+            i++;
+            if (!~this.maskObj[i]){
+              return null;
+            }
+            console.log('this.position1', this.position);
+            if (i <= this.position || this.maskObj[i] === -2) {
+              arrCount++;
+              return null;
+            }
+            console.log('temp', temp);
+            console.log('diff', diff);
+            // console.log('arrCount', arrCount);
+            // console.log('this.maskObj', this.maskObj);
+            // console.log('diff', diff);
+
+            if (temp < diff) {
+              console.log('i: ', i)
+              this.maskObj[i] = -2;
+              temp++;
+              return null;
+            }
+          });
+        }
       }
     } else {
+      console.log('else')
+      console.log('diff', diff);
+      console.log('direction', direction);
+      console.log('arrLen', arrLen);
+      console.log('position', this.position);
+      if (diff === 1 && diff === prevLen && direction === 'right') {
+        Object.values(this.maskObj).forEach((it, i) => {
+          i++;
+          if (!~it) return;
+          this.maskObj[i] = -2;
+        });
+        this.position = this.MIN_CURSOR_POS;
+      } else
       this.updateMaskObj(direction, diff, arrDigit);
     }
 
+    console.log('this.maskObj', this.maskObj);
     const total = Object.values(this.maskObj).reduce((acc, it, index) => {
       if (it === -1) return acc + this.telephoneMask[index];
       if (it === -2) return `${acc}_`;
@@ -153,8 +216,27 @@ export class IndivideForm1 extends React.Component {
   };
 
   handleClick = (e) => {
-    this.position = e.target.selectionStart;
-  }
+    const { value } = e.target;
+    const { value: stateVal } = this.state;
+
+    const arrDigit = (value.match(/\d/g)) || [];
+    const prevArrDigit = (stateVal.match(/\d/g)) || [];
+    const arrLen = arrDigit && arrDigit.length || 0;
+    const prevLen = prevArrDigit && prevArrDigit.length || 0;
+    const diff = Math.abs(prevLen - arrLen);
+    this.posStart = e.target.selectionStart;
+    this.posEnd = e.target.selectionEnd;
+    // console.log('arrlen', arrLen);
+    // console.log('prevlEN', prevLen);
+    // console.log('end', this.posEnd);
+    // console.log('start', this.posStart);
+    // console.log('diff', diff);
+    if (diff === 1 || this.posEnd - this.posStart === 1) {
+      this.position = this.posEnd;
+    } else {
+      this.position = this.posStart;
+    }
+  };
 
   render() {
     const { value } = this.state;
