@@ -1,29 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 
-export class IndivideForm1 extends React.Component {
-  state = {
-    value: null,
-  };
+export class IndivideForm1 extends Component {
+  constructor(props) {
+    super(props);
 
-  telephoneMask = null;
-
-  maskObj = null;
-
-  MIN_CURSOR_POS = 0;
-
-  MAX_CURSOR_POS = 0;
-
-  telephoneRef = React.createRef();
-
-  posStart = 0;
-
-  posEnd = 0;
-
-  maxLen = 0;
-
-  componentDidMount() {
-    const { mask } = this.props;
+    const { mask } = props;
 
     this.telephoneMask = mask || '+X(XXX)-XXX-XX-XX';
     this.maxLen = this.telephoneMask.match(/X/g).length;
@@ -36,12 +18,34 @@ export class IndivideForm1 extends React.Component {
     this.MAX_CURSOR_POS = this.telephoneMask.lastIndexOf('X') + 1;
 
     this.defaultValue = this.telephoneMask.replace(/X/g, '_');
-    this.setState({
+
+    this.telephoneRef = React.createRef();
+    this.posStart = 0;
+    this.posEnd = 0;
+
+    this.state = {
       value: this.defaultValue,
-    });
+    };
   }
 
-  updateMaskObj = (direction, diff, arrDigit) => {
+  updateMaskObj = (direction, diff, arrDigit, prevLen, maskObjArr) => {
+    if (diff === 1 && direction === 'right' && diff === prevLen) {
+      return this.resetMask(maskObjArr);
+    }
+
+    if (diff === 1 && direction === 'right' && this.posEnd - this.posStart > 1) {
+      // correct a position if removed one symbol by multiple selection
+      let index = this.posStart;
+      while (index <= this.posEnd + 1) {
+        if (maskObjArr[index] !== -2 && maskObjArr[index] !== -1) {
+          this.position = index + 1;
+          break;
+        }
+        index += 1;
+      }
+    }
+
+
     let currentPos = this.position;
     if (currentPos < this.MIN_CURSOR_POS) {
       currentPos = this.MIN_CURSOR_POS;
@@ -118,15 +122,13 @@ export class IndivideForm1 extends React.Component {
     });
   };
 
-  resetState = () => {
-    const cursor = this.telephoneRef.current;
-
-    this.setState({
-      value: this.defaultValue,
-    }, () => {
-      cursor.selectionStart = this.MIN_CURSOR_POS;
-      cursor.selectionEnd = this.MIN_CURSOR_POS;
+  resetMask = (maskObjArr) => {
+    maskObjArr.forEach((it, i) => {
+      if (~this.maskObj[++i]) {
+        this.maskObj[i] = -2;
+      }
     });
+    this.position = this.MIN_CURSOR_POS;
   };
 
   handleChange = (e) => {
@@ -137,7 +139,6 @@ export class IndivideForm1 extends React.Component {
 
 
     const arrDigit = (value.match(/\d/g)) || [];
-    arrDigit.length = arrDigit.length > this.maxLen ? this.maxLen : arrDigit.length;
     const prevArrDigit = (stateVal.match(/\d/g)) || [];
 
     const arrLen = arrDigit.length;
@@ -148,14 +149,9 @@ export class IndivideForm1 extends React.Component {
 
     const maskObjArr = Object.values(this.maskObj);
 
-
-    if (diff > 1) {
+    if (diff > 1 && arrLen > 0) {
       if (direction === 'left') {
-        let index = 0;
-        while (arrDigit[index] === prevArrDigit[index]) {
-          index += 1;
-          if (index > this.maxLen) break;
-        }
+        const index = arrDigit.findIndex((it, i) => it !== prevArrDigit[i] || i === prevLen && 0);
         arrDigit.some((it, i) => {
           if (i >= diff) return true;
           prevArrDigit[index + i] = arrDigit[index + i];
@@ -163,53 +159,23 @@ export class IndivideForm1 extends React.Component {
           return false;
         });
       } else {
-        // случай неправильного выделения при удалении
-        if (diff > 1 && this.position === this.MAX_CURSOR_POS) {
+        // incorrect multiple selection
+        if (this.position === this.MAX_CURSOR_POS) {
           this.position = this.MIN_CURSOR_POS;
         }
-        // reset full
-        if (!arrLen) {
-          Object.values(this.maskObj).forEach((it, i) => {
-            i++;
-            if (!~it) return;
-            this.maskObj[i] = -2;
-          });
-          this.position = this.MIN_CURSOR_POS;
-        } else {
-          let temp = 0;
-          let arrCount = 0;
-          Object.values(this.maskObj).forEach((it, i) => {
-            i++;
-            if (!~this.maskObj[i]) {
-              return null;
-            }
-            if (i <= this.position || this.maskObj[i] === -2) {
-              arrCount++;
-              return null;
-            }
 
-            if (temp < diff) {
-              this.maskObj[i] = -2;
-              temp++;
-              return null;
-            }
-          });
-        }
+        maskObjArr.reduce((acc, it, i) => {
+          if (this.maskObj[++i] !== -1 && i > this.position && this.maskObj[i] !== -2 && acc < diff) {
+            this.maskObj[i] = -2;
+            return acc + 1;
+          }
+          return acc;
+        }, 0);
       }
-    } else if (diff === 1 && direction === 'right' && diff === prevLen) {
-      this.resetState();
-    } else if (diff === 1 && direction === 'right' && this.posEnd - this.posStart > 1 && this.posStart < this.posEnd) {
-      // correct a position if removed one symbol by multiple selection
-      let index = this.posStart;
-      while (index <= this.posEnd + 1) {
-        if (maskObjArr[index] !== -2 && maskObjArr[index] !== -1) {
-          this.position = index + 1;
-          break;
-        }
-        index += 1;
-      }
+    } else if (!arrLen) {
+      this.resetMask(maskObjArr);
     } else {
-      this.updateMaskObj(direction, diff, arrDigit);
+      this.updateMaskObj(direction, diff, arrDigit, prevLen, maskObjArr);
     }
 
     this.updateState();
