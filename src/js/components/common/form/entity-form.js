@@ -49,14 +49,14 @@ export const EntityForm = () => (
             'Юридический адрес',
             'legalAdress',
             'input',
-            null,
+            'г.Москва ул.Московская д.99 офис №1',
             required,
           )}
           {renderField(
             'Фактический адрес',
             'realAdress',
             'input',
-            null,
+            'г.Москва ул.Московская д.99 офис №1',
             required,
           )}
           {renderField(

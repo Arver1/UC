@@ -38,8 +38,8 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   height: calc(100vh - 60px);
   position: relative;
-  overflow-y: auto;
   box-sizing: border-box;
+  overflow: hidden;
 `;
 
 export const NotificationPlace = styled.section`

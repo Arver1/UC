@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
+import { Scrollbars } from 'react-custom-scrollbars';
 import routeMap from './route-map';
 import { Section, Wrapper, NotificationPlace } from './styled';
 import { closeModal } from './action';
@@ -36,10 +37,13 @@ export class Modal extends Component {
 	  	<Section reverse={this.state.reverse} className="modal">
 			  <Wrapper>
 			  <Header wait={500} onClick={this.handleClick} title={form.title}/>
+					<Scrollbars style={{height: 'calc(100% - 48px)'}}>
 				  <NotificationPlace className="notification">
 						{form.notification}
 					</NotificationPlace>
 				  {form.component}
+					</Scrollbars>
+					<div style={{height: '50px'}} />
 			  </Wrapper>
 		  </Section>), document.body)
   }

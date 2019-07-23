@@ -61,6 +61,7 @@
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.8.6",
     "react-final-form": "^6.3.0",
     "react-redux": "^6.0.1",
