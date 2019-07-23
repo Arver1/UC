@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { Field } from 'redux-form';
-import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto } from '../../styles';
+import { Field } from 'react-final-form';
+import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto, MIXINS } from '../../styles';
 
 
 export const StyledField = styled(Field)`
   border: 1px solid ${MAIN_COLOR_DGRAY};
   border-radius: 3px;
   padding: 0 5px;
+  height: 20px;
 `;
 
 export const Form = styled.form`
@@ -18,25 +19,24 @@ export const Form = styled.form`
 export const Sup = styled.sup`
   color: ${MAIN_COLOR_RED};
   font-weight: 800;
+  margin-left: 3px;
 `;
 
 export const Label = styled.label`
-  display: flex;
+  ${MIXINS.flex};
+  flex-direction: column;
   margin-bottom: 15px;
-  align-content: center;
-  align-items: center;
 `;
 
 
 export const Span = styled.span`
   display: inline-block;
   vertical-align: top;
-  width: 80px;
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
   color: #000;
   font-family: ${Roboto};
   text-transform: uppercase;
-  margin-right: 10px;
+  margin-bottom: 10px;
 `;
