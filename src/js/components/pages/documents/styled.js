@@ -32,6 +32,7 @@ export const Link = styled.a`
 export const Wrapper = styled.div`
     max-width: 680px;
     padding: 18px 0 0;
+    margin: 0 0 0 60px;
     
     @media (min-width: ${HEADER_DESKTOP_WIDTH}) {
         margin: 0 auto 0 60px;

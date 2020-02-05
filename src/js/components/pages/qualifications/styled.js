@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { MAIN_COLOR_DGRAY, Roboto } from '../../styles';
 
 export const Quote = styled.blockquote`
-  margin: -20px 0 0;
+  margin: -32px 0 0;
+  max-width: 790px;
   padding: 0 60px;
   position: relative;
   font-size: 14px;
