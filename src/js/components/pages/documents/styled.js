@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto, MIXINS, HEADER_DESKTOP_WIDTH } from '../../styles';
 
 export const Quote = styled.blockquote`
-  margin: -20px 0 0;
+  margin: -32px 0 0;
+  max-width: 790px;
   padding: 0 60px;
   position: relative;
   font-size: 14px;
@@ -33,7 +34,7 @@ export const Wrapper = styled.div`
     padding: 18px 0 0;
     
     @media (min-width: ${HEADER_DESKTOP_WIDTH}) {
-        margin: 0 auto 0 150px;
+        margin: 0 auto 0 60px;
     }
 `;
 
