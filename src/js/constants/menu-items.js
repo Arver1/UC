@@ -1,5 +1,5 @@
 import { withRouter } from 'react-router-dom';
-import { Qualifications, ProfStandarts, Documents, About } from '../components/pages';
+import { Qualifications, ProfStandarts, Documents, About, Experts } from '../components/pages';
 
 
 export const defaultMenuItems = [
@@ -25,6 +25,7 @@ export const defaultMenuItems = [
     order: 4,
     name: 'Эксперты',
     url: '/experts',
+    component: Experts,
   },
   {
     order: 5,

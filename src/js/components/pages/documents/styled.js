@@ -43,5 +43,5 @@ export const Paragraph = styled.p`
     ${MIXINS.font('14px', 400, `${MAIN_COLOR_DGRAY}`)};
     max-width: 680px;
     text-align: left;
-    margin: 0 0 18px;
+    margin: 0 18px 18px 0;
 `;

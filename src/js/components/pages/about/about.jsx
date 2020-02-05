@@ -27,16 +27,20 @@ export class About extends PureComponent {
           <Wrapper>
             {getQualityList()}
             <ImgWrapper>
-              <Img>
-                  <a href="https://nok-nark.ru/">
-                      <Text>Реестр сведений о проведении независимой оценки квалификации</Text>
-                  </a>
-              </Img>
-              <Img>
-                  <a href="http://www.orael.ru/professional_skills/nezavisimaya-otsenka-kvalifikatsii/apellyatsionnaya-komissiya-espk/">
-                      <Text>Апелляционная комиссия Совета по профессиональным квалификациям в электроэнергетике</Text>
-                  </a>
-              </Img>
+              <a href="https://nok-nark.ru/" style={{ margin: '0 18px 18px 0' }}>
+                <Img>
+                   <img src="/src/img/nok@1x.png" srcSet="/src/img/nok@2x.png 2x" width="70" height="54"
+                     alt="Реестр сведений НОК" title="Реестр сведений НОК"/>
+                    <Text>Реестр сведений о проведении независимой оценки квалификации</Text>
+                </Img>
+              </a>
+              <a href="http://www.orael.ru/professional_skills/nezavisimaya-otsenka-kvalifikatsii/apellyatsionnaya-komissiya-espk/">
+                <Img>
+                   <img src="/src/img/orael@1x.png" srcSet="/src/img/orael@2x.png 2x" width="70" height="71"
+                      alt="Ассоциация ЭРА России" title="Ассоциация ЭРА России"/>
+                    <Text>Апелляционная комиссия Совета по профессиональным квалификациям в электроэнергетике</Text>
+                </Img>
+              </a>
             </ImgWrapper>
           </Wrapper>
       </>
