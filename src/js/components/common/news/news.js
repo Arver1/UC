@@ -27,7 +27,7 @@ export class News extends Component {
             <Time dateTime="ДД.ММ.ГГ">{it.data.format('DD.MM.YY')}</Time>
           </Wrapper>
           <Description>{it.description}</Description>
-          <MoreLink href="/news" title="Посмотреть подробнее">Подробнее</MoreLink>
+          <MoreLink title="Посмотреть подробнее">Подробнее</MoreLink>
         </li>
       ))}
     </UL>
@@ -38,7 +38,7 @@ export class News extends Component {
     return (
       <Section>
         <H2>Новости</H2>
-        <StyledLink to="/news" title="Посмотреть ленту новостей">
+        <StyledLink title="Посмотреть ленту новостей">
           Все новости
           <SVG width="15" height="15">
             <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#chevron-right" />

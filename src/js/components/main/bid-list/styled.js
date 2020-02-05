@@ -71,6 +71,7 @@ export const Wrapper = styled.div`
 export const StyledLink = styled.a`
   ${MIXINS.font('12px', 500, '#fff')};
   background-color: ${MAIN_COLOR_RED};
+  opacity: 0.5;
   text-align: center;
   vertical-align: center;
   padding: 5px;

@@ -9,6 +9,7 @@ const showNotice = keyframes`
 `;
 
 export const H3 = styled.h3`
+  width: 100%;
   background-color: ${MAIN_WARNING_COLOR};
   text-align: center;
   font-size: 12px;

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Field } from 'react-final-form';
-import { MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto, MIXINS } from '../../styles';
+import {
+  MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto, MIXINS,
+} from '../../styles';
 
 
 export const StyledField = styled(Field)`
@@ -39,4 +41,9 @@ export const Span = styled.span`
   font-family: ${Roboto};
   text-transform: uppercase;
   margin-bottom: 10px;
+`;
+
+export const Input = styled.input`
+  outline: none;
+  border: 1px solid ${({ error }) => (error ? `${MAIN_COLOR_RED}` : '#A9A9A9')};
 `;

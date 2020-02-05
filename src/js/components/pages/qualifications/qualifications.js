@@ -26,10 +26,9 @@ export class Qualifications extends PureComponent {
     return (
       <>
   {Title('Квалификации')}
-  <BreadCrumbs path={pathName} />
-  {/* <Note> */}
-  {/* {dataNote} */}
-  {/* </Note> */}
+   <Note>
+  {dataNote}
+ </Note>
   {getQualityList()}
       </>
     );

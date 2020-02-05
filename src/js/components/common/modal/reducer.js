@@ -1,7 +1,7 @@
 import { handleActions, combineActions } from 'redux-actions';
 import { closeModal, showModal } from './action';
 
-const defaultState = { modalName: 'bid_form_u' };
+const defaultState = {};
 
 export const showModalReducer = handleActions(
   {
