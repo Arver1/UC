@@ -44,4 +44,9 @@ export const Paragraph = styled.p`
     max-width: 680px;
     text-align: left;
     margin: 0 18px 18px 0;
+    
+    @media (min-width: ${HEADER_DESKTOP_WIDTH}) {
+        margin: 0;
+        max-width: none;
+    }
 `;

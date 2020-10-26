@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { Field } from 'react-final-form';
 import {
   MAIN_COLOR_DGRAY, MAIN_COLOR_RED, Roboto, MIXINS,
 } from '../../styles';
 
 
-export const StyledField = styled(Field)`
+export const StyledField = styled.input`
   border: 1px solid ${MAIN_COLOR_DGRAY};
   border-radius: 3px;
   padding: 0 5px;

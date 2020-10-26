@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import {
   Section, H2, StyledLink, SVG, Description, Time,
-  Wrapper, MoreLink, UL,
+  Wrapper, MoreLink, UL, Li
 } from './styled';
 import listNews from '../../../constants/news';
 
@@ -19,16 +19,19 @@ export class News extends Component {
   getNews = (news = lastNews) => (
     <UL>
       {news.map((it, index) => (
-        <li key={index}>
+        <Li key={index}>
           <Wrapper>
             <picture>
-              <img src={it.imgSrc} width="50" alt="Новость" title="Новость" />
+              <img src={it.imgSrc} width="50" height="28" alt="Новость" title="Новость" />
             </picture>
             <Time dateTime="ДД.ММ.ГГ">{it.data.format('DD.MM.YY')}</Time>
           </Wrapper>
           <Description>{it.description}</Description>
-          <MoreLink title="Посмотреть подробнее">Подробнее</MoreLink>
-        </li>
+          { it.isActive ?
+              <MoreLink title="Посмотреть подробнее" href={ it.url }>Подробнее</MoreLink>
+              : <MoreLink title="Посмотреть подробнее">Подробнее</MoreLink>
+          }
+        </Li>
       ))}
     </UL>
   );

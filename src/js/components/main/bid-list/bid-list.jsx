@@ -6,23 +6,23 @@ import {noop} from "../../../constants";
 
 @connect(null, {showModal})
 export class BidList extends Component {
-  
+
   handleClickU = (e) => {
     e.preventDefault();
     const {showModal = noop} = this.props;
-    
-    //showModal('bid_form_u');
+
+    showModal('bid_form_u');
   };
-  
+
   handleClickF = (e) => {
     e.preventDefault();
     const {showModal = noop} = this.props;
-    
-    //showModal('bid_form_f');
+
+    showModal('bid_form_f');
   };
-  
+
   render(){
-    
+
     return (
       <List>
         <ListItem>
@@ -36,7 +36,7 @@ export class BidList extends Component {
         <ListItem>
           <Wrapper>
             <h3>Юридические лица</h3>
-            <StyledLink href="#req_entity" title="недоступно" onClick={this.handleClickU}>Подать заявку</StyledLink>
+            <StyledLink href="#req_entity" title="Подать заявку как юридическое лицо" onClick={this.handleClickU}>Подать заявку</StyledLink>
           </Wrapper>
           <img src="/src/img/manager@1x.png" srcSet="/src/img/manager@2x.png 2x" width="138" height="200"
                alt="Изображение начальника"

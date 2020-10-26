@@ -14,6 +14,11 @@ export const Section = styled.section`
   }
 `;
 
+export const Li = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
 
 export const H2 = styled.h2`
   ${MIXINS.font('20px', 400, `${MAIN_COLOR_DGRAY}`)};
@@ -38,7 +43,7 @@ export const Description = styled.p`
   ${MIXINS.font('12px', 400)};
   width: 200px;
   padding-left: 64px;
-  margin: 0 0 5px;
+  margin: 0 0 auto;
   
   @media(min-width: ${HEADER_DESKTOP_WIDTH}){
      font-size: 14px;
@@ -56,7 +61,6 @@ export const Time = styled.time`
 
 export const Wrapper = styled.div`
   padding-left: 10px;
-  margin-bottom: 10px;
 `;
 
 export const MoreLink = styled.a`

@@ -8,7 +8,7 @@ export const SOCIAL = {
   youtube: '#youtube',
 };
 
-export const NUMBER = '74995830670';
+export const NUMBER = '74995830680';
 export const WORK_TIME = '09:00-18:00';
 export const ADDRESS = '143040, Российская Федерация, Московская область, Одинцовский район, г. Голицыно, бульвар Генерала Ремезова, д.6., пом. 1.';
 

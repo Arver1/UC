@@ -4,3 +4,5 @@ export { Qualifications } from './qualifications';
 export { Documents } from './documents';
 export { About } from './about';
 export { Experts } from './experts';
+export { Contacts } from './contacts';
+export { News } from './news';

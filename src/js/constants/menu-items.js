@@ -1,5 +1,5 @@
 import { withRouter } from 'react-router-dom';
-import { Qualifications, ProfStandarts, Documents, About, Experts } from '../components/pages';
+import { Qualifications, ProfStandarts, Documents, About, Experts, Contacts } from '../components/pages';
 
 
 export const defaultMenuItems = [
@@ -32,5 +32,11 @@ export const defaultMenuItems = [
     name: 'О МРЦОК',
     url: '/about',
     component: About,
+  },
+  {
+    order: 6,
+    name: 'Контакты',
+    url: '/contacts',
+    component: Contacts,
   },
 ];
