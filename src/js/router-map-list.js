@@ -9,6 +9,7 @@ import {
 import { NotFound } from './components/pages/404';
 import { Modal, Notification } from './components/common/modal';
 import { News } from './components/pages/news';
+import { DriveWay } from './components/pages/drive-way/drive-way';
 
 
 const getPages = menuItems => menuItems.map(it => <Route path={it.url} component={it.component} />);
@@ -23,6 +24,7 @@ export default () => (
       <Route exact path="/" component={Main} />
       <Route path="/news" component={News} />
       {getPages(defaultMenuItems)}
+      <Route path="/driveway" component={DriveWay} />
       <Route component={NotFound} />
     </Switch>
     <Route path="/" component={Footer} />

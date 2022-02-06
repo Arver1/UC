@@ -11,7 +11,7 @@ export const Footer = () => (
       <p style={{ marginBottom: '15px' }}>
         <Span>{ADDRESS}</Span>
         <WrapperLink>
-          <StyledLink>Схема проезда</StyledLink>
+          <StyledLink to="/driveway">Схема проезда</StyledLink>
           <span style={{color: '#fff'}}>/</span>
           <StyledLink>Политика конфидициальности</StyledLink>
         </WrapperLink>
