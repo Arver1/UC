@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, ListItem } from './styled';
+import { List, ListItem, StyledLink } from './styled';
 
 
 const SVGIcon = () => (
@@ -11,9 +11,9 @@ const SVGIcon = () => (
 
 export const RouteList = ({ data }) => (
   <List>
-    {data.map(({ count, name }, index) => (
+    {data.map(({ count, name, href }, index) => (
       <ListItem key={index}>
-        <SVGIcon />
+        <StyledLink to={ href }><SVGIcon /></StyledLink>
         <b>{count}</b>
         {` ${name}`}
       </ListItem>
@@ -30,5 +30,6 @@ RouteList.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({
     count: PropTypes.number,
     name: PropTypes.string,
+    href: PropTypes.string,
   })),
 };

@@ -1,6 +1,15 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { HEADER_DESKTOP_WIDTH, MAIN_COLOR_DGRAY, MIXINS } from '../../styles';
 
+
+export const StyledLink = styled(Link)`
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  text-decoration: none;
+  margin: 0 10px;
+`;
 
 export const List = styled.ul`
   width: 280px;
